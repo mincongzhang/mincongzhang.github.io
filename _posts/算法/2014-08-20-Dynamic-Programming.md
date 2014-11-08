@@ -87,4 +87,4 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 
 <!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg) -->
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg" alt="LCS" title="LCS" height="300"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg" alt="LCS" title="LCS" height="200"/>
