@@ -85,10 +85,6 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 (2)分而治之,取左上+1  
 (3)减而治之,看上,左,取最大的复制  
 
-![Demo](https://github.com/mincongzhang/mincongzhang.github.io/tree/master/_posts/算法/LCS.jpg)
+<!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg) -->
 
-!(https://github.com/mincongzhang/mincongzhang.github.io/tree/master/_posts/算法/LCS.jpg)[/LCS.jpg]
-
-![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/tree/_posts/算法/LCS.jpg)
-
-![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg)
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg" alt="LCS" title="LCS" height="300"/>
