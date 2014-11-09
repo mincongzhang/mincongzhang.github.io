@@ -48,3 +48,16 @@ drive控制的是amplifier的增益,其值过高的时候就是过载(overdrive)
     <a style="float:left;">
 	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(2).jpg" height="300"/>
 </a>
+
+里面的无边框半透明圆形的代码:
+
+```
+function circle(x,y,r)
+	a=0:pi/50:2*pi;
+	X=x+r*cos(a); 
+	Y=y+r*sin(a); 
+	fill(X,Y,'b','edgealpha',0)
+	alpha(0.5);
+	axis equal 
+end
+```
