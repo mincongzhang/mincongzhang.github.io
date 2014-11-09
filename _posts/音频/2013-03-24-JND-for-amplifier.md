@@ -31,12 +31,8 @@ drive控制的是amplifier的增益,其值过高的时候就是过载(overdrive)
 
 4.treble
 
-<a style="float:left;">
-    <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(1).jpg" height="100"/>
-</a>
-    <a style="float:left;">
-	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(2).jpg" height="100"/>
-</a>
+    <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(1).jpg" height="200"/>
+	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(2).jpg" height="200"/>
 
 里面的无边框半透明圆形的代码:
 
