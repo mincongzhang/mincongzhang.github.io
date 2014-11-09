@@ -15,37 +15,37 @@ drive控制的是amplifier的增益,其值过高的时候就是过载(overdrive)
 
 1.drive
 
-<a style="float:left;">
+<a style="left;">
     <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_drive(1).jpg" height="300"/>
 </a>
-    <a style="float:left;">
+    <a style="left;">
 	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_drive(2).jpg" height="300"/>
 </a>
 
 2.bass
 
-<a style="float:left;">
+<a style="left;">
     <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_bass(1).jpg" height="300"/>
 </a>
-    <a style="float:left;">
+    <a style="left;">
 	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_bass(2).jpg" height="300"/>
 </a>
 
 3.mid
 
-<a style="float:left;">
+<a style="left;">
     <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_mid(1).jpg" height="300"/>
 </a>
-    <a style="float:left;">
+    <a style="left;">
 	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_mid(2).jpg" height="300"/>
 </a>
 
 4.treble
 
-<a style="float:left;">
+<a style="left;">
     <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(1).jpg" height="300"/>
 </a>
-    <a style="float:left;">
+    <a style="left;">
 	<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_treble(2).jpg" height="300"/>
 </a>
 
