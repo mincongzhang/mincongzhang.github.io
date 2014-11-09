@@ -11,37 +11,37 @@ tags: ["python"]
 1.首先下载任何一个版本的REAPER,再下载python3.1以上的版本,并且配置环境(e.g.高级系统设置→环境变量→PATH→C:\python31).
 其实python3.1和2.x的区别不是想象的那么大,目前发现的区别就在于()的使用,以及raw_input()这个函数的删除,见以下:
 
-    1)Python2.5中函数调用不需要使用(), 在Python3.1中则必须使用():
-      如Python 2.5中可以用：print 'Hello world!'
-      在Python 3.1中必须改用：print ('Hello world!')
-    2)Python2.5中输入函数可以用raw_input()
-      在Python3.1中则只能用input()，删除了raw_input()函数
+>    1)Python2.5中函数调用不需要使用(), 在Python3.1中则必须使用():
+>      如Python 2.5中可以用：print 'Hello world!'
+>      在Python 3.1中必须改用：print ('Hello world!')
+>    2)Python2.5中输入函数可以用raw_input()
+>      在Python3.1中则只能用input()，删除了raw_input()函数
 
 2.打开REAPER
 
 3.选择 Actions 菜单, show actions list
 
-image: reaper_script1
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER1.jpg"/>
 
 4.在搜索栏输入"script" 
 
 5.选择并运行"ReaScript: open ReaScript help (html)...". 一个网页会弹出, 第二行会说是否检测到Python的安装.
 (不成功的话检查PATH里的环境变量, 安装python并且配置环境变量后最好重启一下; 还有一个可能是在option里的perference没有勾选python操作)
 
-image: reaper_script2
-image: reaper_script3
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER2.jpg"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER3.jpg"/>
 
 6.Run the ReaScript: "Run Python script"
 
-image: reaper_script4
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER4.jpg"/>
 
 7.Choose a scripted python file
 
-image: reaper_script5
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER5.jpg"/>
 
 8.测试成功
 
-image: reaper_script6
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/脚本/python-in-REAPER6.jpg"/>
 
 现在就可以给REAPER写各种python脚本了.
 
@@ -60,13 +60,13 @@ image: reaper_script6
 我写的一个例子:
 
 ```
-def render_and_rename(renderpath,newpath,rendername,newname):
-   RPR_Main_OnCommand(41823,0) #add project to render queue, using the most recent render settings
-   RPR_Main_OnCommand(41207,0) #render all queued renders
- if new not in os.listdir(newpat):
-    os.renames(renderpath + os.sep + rendername,newpath + os.sep + newname)
- if new in os.listdir(newpat):
-    RPR_ShowConsoleMsg(new+" is generated in "+newpat+"\n\n") 
+	def render_and_rename(renderpath,newpath,rendername,newname):
+	   RPR_Main_OnCommand(41823,0) #add project to render queue, using the most recent render settings
+	   RPR_Main_OnCommand(41207,0) #render all queued renders
+	 if new not in os.listdir(newpat):
+	    os.renames(renderpath + os.sep + rendername,newpath + os.sep + newname)
+	 if new in os.listdir(newpat):
+	    RPR_ShowConsoleMsg(new+" is generated in "+newpat+"\n\n") 
 ```
 
 而且python脚本是能对任何VST plugins进行操作,不限于它自己的plugins,所以WAVES上的GTR啥的都毫无压力.
