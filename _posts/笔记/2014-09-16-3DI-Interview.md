@@ -6,7 +6,7 @@ description: FactSet面试
 tags: ["C++","算法","数据结构"]
 ---
 
-从Interview里也能学到一些新思想嗯. 3DI是一个3D搜索/打印的创业公司,我的毕设就是帮他们做的一个"Scan to search"的3D搜索系统,可惜的是他们很难提供签证...所以感觉没戏了
+从Interview里也能学到一些新思想嗯. 3DI是一个3D搜索/打印的创业公司,我的毕设就是帮他们做的一个"Scan to search"的3D搜索原型系统(prototype). 验证使用球谐函数描述3D模型(spherical harmonics)进行搜索的可行性. 他们愿意留我继续工作, 但是他们需要申请license再提供工作签证, 时间比较长就不等了.
 
 ### 输出一个序列的powerset(所有子集)
 1.用bit
