@@ -46,3 +46,12 @@ function circle(x,y,r)
 	axis equal 
 end
 ```
+
+5.最后论文里的分析结果,用了boxplot: 
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/JND_4params.jpg" height="200"/>
+
+6.结论是:
+drive方面过载(overdrive)到一定强度之后人们就分辨不出细微的区别; bass过低(低频强度不足)人们也分别不出区别,但低频增加到一定强度之后细微的调整人们都能分辨出区别;
+mid增加到一定强度后人们反而分辨不出区别;
+treble高频强度的从低到高人们辨识度没有太大变化. 
