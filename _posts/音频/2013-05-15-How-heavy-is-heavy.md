@@ -12,6 +12,6 @@ tags: ["音频处理"]
 
 通过设立一个在线音频测试网站, 超过900名测试者注册登录并且完成了我们的测试(大部分测试者为中国和英国网民,少量欧洲网民参与了测试). 每名测试者会被分配20道听力题, 每一题会随机给出两段相同旋律的音频(吉他演奏段落riff), 但经过了不同的失真处理, 包含不同的参数值. 用户仅凭听力选出他们觉得"重"的那一段riff. 后台算法最终会把所有音频从重到轻排序, 并且得到他们的参数数据. 最终结果如下: 
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/heaviness.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/音频/heaviness.jpg" height="400"/>
 
 其中颜色越深的球体表示在其位置的参数组合使音频显得更重. 从中可以明显观察到, 当bass和treble参数较高, mid参数较低时, 失真的riff显得相对较重. 反之bass和treble参数较低, mid参数较高时, riff显得比较轻(在吉他演奏里这样显得比较"飘", 常用于较柔和的音乐). 这些数据与结论将用于于伦敦大学数字音乐中心（C4DM）进行下一步研究(音乐情感智能识别，以及音乐流派智能辨识）. 比如输入一段新的音频, 通过信号处理分析出这段音频低中高频的平均分布, 自动检测出这个音频属于"重金属"或者"轻音乐", 再智能推荐给用户. 
