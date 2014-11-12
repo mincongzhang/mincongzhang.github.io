@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 别人的百度面经整理
+title: 别人的面经整理
 category: 笔记
-description: 百度面经
+description: 面经
 tags: ["C++","算法","数据结构"]
 ---
 
@@ -35,3 +35,9 @@ tags: ["C++","算法","数据结构"]
 4.数据库隔离级别介绍、举例说明。
 5.override和overload的区别。(虚函数下override,重载overload)
 6.最后面试官说像计算机体系结构、操作系统这样的书一定要看国外的，国内的有时候会误导人。
+
+### 零散面试题整理
+1. 1. difference between const char * and char * const
+2. rotate string by k elements to the right in place.
+3. give a situation that can cause deadlock, how to solve this
+
