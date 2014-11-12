@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 别人的百度面经整理,看自己还欠缺哪部分知识
+title: 别人的百度面经整理
 category: 笔记
 description: 百度面经
 tags: ["C++","算法","数据结构"]
