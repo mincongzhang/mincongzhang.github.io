@@ -67,8 +67,7 @@ FactSet其他部门会获取很多数据,然后稍微处理再给软件开发部
 -HR又问你平常怎么干活的,我说weekday普通干活, weekend可能出去玩或者看online course.
 -HR又问有没有小组作业,我说有的,我小组作业和hackathon玩的都是extreme programming,两个人一起写, 一个人不ok了另一个人接替,他们说这略恐怖,在他们那工作不会这么累. (后来想到如果说问小组合作的东西,可以回答以前hackathon的时候一开始大家只讨论技术细节,我提建议说先把大方向tasks分了(前端后端)再各自研究细节可以省时间并且效率高, 这样可以体现团队合作能力)
 -然后技术经理问我爱立信的PT router是啥, 我说可以用网页配环境升级, 不需要把路由器拿下来; 他说这路由器是我们家用的那种? 我说不是, 这PT router虽然是叫mini link,但是还是超级巨大的; 他们说这真讽刺哈哈...
--然后又胡扯了一堆,他们问我有啥问题, 我说我中饭后喜欢打个盹,结果回来发现我说错了,打盹是(take a nap),但是我说成take a snap(打个折), 他们表示不知道是啥, 我说就是睡一觉...他们说哈哈随便...
--然后就寒暄一下就完事了, 他们说你现在可以回去打个折了(take a snap)...我说是的嗯....
+-然后又胡扯了一堆就结束了嗯
 
 ref:http://analgorithmaday.blogspot.co.uk/2011/05/construct-binary-tree-from-pre-order.html
 ref:http://leetcode.com/2011/04/construct-binary-tree-from-inorder-and-preorder-postorder-traversal.html
