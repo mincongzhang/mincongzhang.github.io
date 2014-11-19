@@ -55,6 +55,12 @@ tags: ["C++","算法","数据结构"]
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree.jpg" alt="LCS" title="LCS" height="200"/>
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_result.jpg" alt="LCS" title="LCS" height="200"/>
 
+7.性能分析
+(1)具有折叠效果(修复作用):一旦访问坏节点,对应路径的长度随即减半
+(2)单趟伸展作用,分摊O(logn)时间
+
+8.小问题:节点只有父亲没有祖父,只用一次zig或者zag
+
 ****AVL树里的zig和zag的实现还需要再看看
 
 ### 伸展树(Splay Tree): 算法实现
