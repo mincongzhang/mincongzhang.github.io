@@ -126,6 +126,7 @@ BinNodePosi(T) BST<T>::insert( const T & e ){
 ```
 
 4.删除(delete)
+*重要
 
 ```
 /*delete*/
