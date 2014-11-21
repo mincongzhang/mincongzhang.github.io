@@ -65,6 +65,19 @@ tags: ["C++","算法","数据结构"]
 
 ### 伸展树(Splay Tree): 算法实现
 
+```
+template <typename T>
+class Splay: public BST<T>{	//由BST派生
+
+protected: BinNodePosi(T) splay(BinNodePosi(T) v);  //将v伸展至根
+
+public:		//伸展树的查找也会引起整树的结构调整,故search()也需要重写
+	BinNodePosi(T) & search(const T & e); //查找 (重写)
+	BinNodePosi(T) insert(const T & e);	  //插入 (重写)
+	bool remove(const T & e);			  //删除 (重写)
+}
+```
+
 
 资料补充:
 1.自适应链表
