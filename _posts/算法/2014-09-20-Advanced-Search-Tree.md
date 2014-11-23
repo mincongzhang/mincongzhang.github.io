@@ -72,12 +72,45 @@ class Splay: public BST<T>{	//由BST派生
 protected: BinNodePosi(T) splay(BinNodePosi(T) v);  //将v伸展至根
 
 public:		//伸展树的查找也会引起整树的结构调整,故search()也需要重写
-	BinNodePosi(T) & search(const T & e); //查找 (重写)
+	BinNodePosi(T) & search(const T & e); //查找 (重写,因为查找的时候拓扑有变化)
 	BinNodePosi(T) insert(const T & e);	  //插入 (重写)
 	bool remove(const T & e);			  //删除 (重写)
 }
 ```
 
+1.伸展算法
+
+```
+template <typename T> BinNodePosi(T) Splay<T>::splay( BinNodePosi(T) v ){
+	if (!v) return NULL;
+	BinNodePosi(T) p;   //父亲
+	BinNodePosi(T) g;	//祖父
+	
+	while( ( p=v->parent ) && (g=p->parent) ){	//自下而上,反复双层伸展
+	//每轮之后,v都将以原曾祖父为父
+	BinNodePosi(T) gg = g->parent;
+	
+	/*四种情况*/
+	if( IsLChild(*v) ){
+		if( IsLChild(*p) ){/*zig-zig*/}else{/*zig-zag*/}
+	} else {
+		if( IsRChild(*p) ){/*zag-zag*/}else{/*zag-zig*/}
+	}
+	
+	//若无曾祖父gg,则v现即为树根;否则,gg此后应以v为左或右孩子
+	if  (!gg) v->parent = NULL; 
+	else(g==gg->lc)? attachAsLChild(gg,v):attachAsRChild(gg,v);
+	
+	updateHeight(g);updateHeight(p);updateHeight(v);	
+	}//双层伸展结束时,必有g==NULL,但p可能非空
+	
+	if(p=v->parent){/*若p果真是根,只需在额外单旋(至多一次)*/}
+	v->parent = NULL;
+	return v;//伸展完成,v抵达树根
+}
+```
+
+2.四种情况
 
 资料补充:
 1.自适应链表
