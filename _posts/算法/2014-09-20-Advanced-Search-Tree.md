@@ -55,13 +55,15 @@ tags: ["C++","算法","数据结构"]
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree.jpg" alt="LCS" title="LCS" height="200"/>
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_result.jpg" alt="LCS" title="LCS" height="200"/>
 
-7.性能分析
+7.总结:
+(1)子孙异侧,v调整到(子)树根;
+(2)子孙同侧,反转顺序,例子:g->p->v => v->p->g
+
+8.性能分析
 (1)具有折叠效果(修复作用):一旦访问坏节点,对应路径的长度随即减半
 (2)单趟伸展作用,分摊O(logn)时间
 
-8.小问题:节点只有父亲没有祖父,只用一次zig或者zag
-
-****AVL树里的zig和zag的实现还需要再看看
+9.小问题:节点只有父亲没有祖父,只用一次zig或者zag
 
 ### 伸展树(Splay Tree): 算法实现
 
@@ -81,6 +83,8 @@ public:		//伸展树的查找也会引起整树的结构调整,故search()也需
 1.伸展算法
 
 ```
+/*双层伸展*/
+//v上升两层,成为(子)树根
 template <typename T> BinNodePosi(T) Splay<T>::splay( BinNodePosi(T) v ){
 	if (!v) return NULL;
 	BinNodePosi(T) p;   //父亲
@@ -98,6 +102,7 @@ template <typename T> BinNodePosi(T) Splay<T>::splay( BinNodePosi(T) v ){
 	}
 	
 	//若无曾祖父gg,则v现即为树根;否则,gg此后应以v为左或右孩子
+	//这时v已经成为(子)树根,v的parent需要更新
 	if  (!gg) v->parent = NULL; 
 	else(g==gg->lc)? attachAsLChild(gg,v):attachAsRChild(gg,v);
 	
