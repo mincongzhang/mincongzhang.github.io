@@ -112,6 +112,21 @@ template <typename T> BinNodePosi(T) Splay<T>::splay( BinNodePosi(T) v ){
 
 2.四种情况
 
+```
+/*zigzig*/
+if( IsLChild(*v) ){
+	if( IsLChild(*p) ){
+		/*zig-zig*/
+		attachAsLChild(g,p->rc);
+		attachAsLChild(p,v->rc);
+		attachAsRChild(p,g);
+		attachAsRChild(v,p);
+	}else{/*zig-zag*/}
+} else {
+	if( IsRChild(*p) ){/*zag-zag*/}else{/*zag-zig*/}
+}
+```
+
 资料补充:
 1.自适应链表
 
