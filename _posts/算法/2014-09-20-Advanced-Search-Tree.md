@@ -134,6 +134,19 @@ if( IsLChild(*v) ){
 
 3.查找算法
 
+```
+template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
+	//调用标准BST的内部接口定位目标节点
+	BinNodePosi(T) p = searchIn( _root,e,_hot=NULL );
+	
+	//无论成功与否,最后被访问的节点都将伸展至根
+	_root = splay(p?p:_hot);//成功or失败
+	
+	//总是返回根节点
+	return _root;
+}
+```
+
 资料补充:
 1.自适应链表
 
