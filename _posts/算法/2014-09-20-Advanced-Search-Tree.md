@@ -139,13 +139,16 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 	//调用标准BST的内部接口定位目标节点
 	BinNodePosi(T) p = searchIn( _root,e,_hot=NULL );
 	
-	//无论成功与否,最后被访问的节点都将伸展至根
+	//无论成功与否,最后被访问的节点都将伸展至根(_hot是成功或失败后所在节点的父节点)
 	_root = splay(p?p:_hot);//成功or失败
 	
-	//总是返回根节点
-	return _root;
+	//总是返回根节点,能得到相等或近似(_hot)的节点
+	return _root;		//用到了*局部性*,(局部性是啥?)
 }
 ```
+
+问题:
+1.局部性在之前哪里提到了?哪次课?
 
 资料补充:
 1.自适应链表
