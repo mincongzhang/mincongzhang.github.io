@@ -102,3 +102,8 @@ void List<T>::insertSort(Posi(T) p,int n){
 (5)p所对应的inversion有多少个,就要经过多少次比较才能抵达最终插入位置
 (6)最好情况,逆序对总数0,复杂度O(0+n)
 (7)最坏情况,逆序对总数n^2,复杂度O(n^2+n)=O(n^2)
+
+
+### 排序算法对比
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/fZkqGaPuYPA?rel=0" frameborder="0" allowfullscreen></iframe>
