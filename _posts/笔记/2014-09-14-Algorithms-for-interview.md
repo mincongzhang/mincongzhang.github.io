@@ -3,7 +3,7 @@ layout: post
 title: 为面试所准备的算法练习
 category: 笔记
 description: 算法练习
-tags: ["C++","算法","数据结构"]
+tags: ["面试"]
 ---
 
 ### 反转double linked list

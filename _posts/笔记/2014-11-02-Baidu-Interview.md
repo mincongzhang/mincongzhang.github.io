@@ -3,7 +3,7 @@ layout: post
 title: 别人的面经整理
 category: 笔记
 description: 面经
-tags: ["C++","算法","数据结构"]
+tags: ["面试"]
 ---
 
 ### 进程线程

@@ -3,7 +3,7 @@ layout: post
 title: FactSet面试:FactSet Software development Interview
 category: 笔记
 description: FactSet面试
-tags: ["C++","算法","数据结构"]
+tags: ["面试"]
 ---
 
 从Interview里也能学到一些新思想嗯
