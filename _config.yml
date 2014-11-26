@@ -24,19 +24,20 @@ favicon: /public/upload/avatar/favicon.ico
 
 # google analytics 设置
 ga:
-  id: UA-44312631-1
+  id: UA-57150706-1
   url: mincongzhang.github.io/
 
 # disqus 设置
 disqus:
-  shortname: mincong
+  shortname: mincongzhangblog
 
 # 主题设置，自动激活某个标签
-active: 笔记
+active: 算法
 
 # 首页除了最新文章外按标签分类显示
 cates:
-  - OpenLDAP
+  - C++
+  - 算法
 
 # 中文本地化
 locals:
