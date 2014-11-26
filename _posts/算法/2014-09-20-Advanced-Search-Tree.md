@@ -50,9 +50,9 @@ tags: ["C++","算法","数据结构"]
 
 4.子孙异侧:旋转方式和AVL树的双旋调整没区别
 5.子孙同侧:越级,祖父节点先旋转,再旋转父节点,孙节点就能上升2层(如图)(一般情况,父节点旋转,祖父节点旋转,孙节点上升两层)
-6.奥妙之处:旋转调整结束后,整棵树的拓扑都变了,树高降低,极端情况能缩减为一半(如图)
+6.奥妙之处:旋转调整结束后,整棵树的拓扑都变了,树高降低,极端情况(单链)能缩减为一半(如图)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_zigzag.jpg" alt="LCS" title="LCS" height="200"/>
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_result.jpg" alt="LCS" title="LCS" height="200"/>
 
 7.总结:
@@ -147,11 +147,29 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 }
 ```
 
+4.插入算法
+(1)直观方法:调用BST标准的插入算法,再将新节点伸展至根(首先需调用BST::search())
+(2)但是,重写后的Splay::search()已继承了splay()操作
+(3)查找(失败)之后,_hot即是根节点
+(4)拆开_hot的一个子树,接上v (如图)
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splay_tree_insert.jpg" alt="LCS" title="LCS" height="200"/>
+
+5.删除算法
+(1)直观方法:调用BST标准的删除算法,再将_hot伸展至根
+(2)但是,Splay::search()查找(成功)后,目标节点即是树根
+(3)即可,在查找后的树根附近完成目标节点的删除
+(4)之后的连接,一个可行的方法,从右子树中提取最小的节点(参考中序遍历算法迭代版)作为root,连结左子树和剩下的右子树(如图)
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splay_tree_delete.jpg" alt="LCS" title="LCS" height="200"/>
+
 问题:
 1.局部性在之前哪里提到了?哪次课?
+2.伸展树假设的前提是怎么出现的? 为什么要查找的就要往树根移,要插入和删除的元素也要往树根移动?
 
 资料补充:
 1.自适应链表
 
 参考资料:
 1. 伸展树wiki: http://zh.wikipedia.org/wiki/%E4%BC%B8%E5%B1%95%E6%A0%91
+2. 相当不错的一个介绍伸展树的博客,还带有其应用场景 http://www.artofproblemsolving.com/blog/54268
