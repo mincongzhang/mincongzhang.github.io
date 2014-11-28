@@ -143,7 +143,7 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 	_root = splay(p?p:_hot);//成功or失败
 	
 	//总是返回根节点,能得到相等或近似(_hot)的节点
-	return _root;		//用到了*局部性*,(局部性是啥?)
+	return _root;		//用到了*局部性*
 }
 ```
 
@@ -163,9 +163,33 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splay_tree_delete.jpg" alt="LCS" title="LCS" height="200"/>
 
+### 综合评价
+优点:
+1.无需记录节点高度或平衡因子
+
+2.编程实现简单易行--优于AVL树
+
+3.分摊复杂度O(logn)--与AVL树相当
+
+4.局部性强,缓存命中率极高时(即k<<n<<m)
+(1)效率甚至可以更高--自适应的O(logk)
+(2)任何连续的m次查找,都可在O(mlogk+nlogn)时间内完成
+
+5.新安装的电脑,经过一段时间的应用后就非常顺手. 是因为通常的操作系统都充分利用了数据访问的局部性,从而使得缓存的命中率能够达到尽可能的高.
+
+缺点:
+6.尽管分摊效率好,不能保证杜绝单次最坏情况
+(1)伸展树的形状在任何时刻通常都是不平衡,甚至极其不平衡
+(2)首次查找将付出代价,尽管之后路径减半
+
+7.对单次操作效率敏感的场合不适用
+(1)比如控制手术器械的程序不能采用这一类数据结构
+
+
+
 问题:
-1.局部性在之前哪里提到了?哪次课?
-2.伸展树假设的前提是怎么出现的? 为什么要查找的就要往树根移,要插入和删除的元素也要往树根移动?
+1.局部性在之前哪里提到了?哪次课?(就在本课最开始的概念Locality)
+2.伸展树假设的前提是怎么出现的? 为什么要查找的就要往树根移,要插入和删除的元素也要往树根移动? (比如电脑的使用,数据访问的局部性)
 
 资料补充:
 1.自适应链表
