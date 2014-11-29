@@ -49,6 +49,21 @@ tags: ["C++","算法","数据结构"]
 
 2.B-Tree
 (1)平衡的多路(multi-way)搜索树
-(2)若干个二路节点经适当合并可得*超级节点*
+(2)若干个二路节点经适当合并可得*超级节点* (如图2代合并得4路分支)
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree.jpg" alt="LCS" title="LCS" height="200"/>
+
+3.多路(multi-way)有什么用呢
+(1)*多级*储存系统中使用B树,可针对外部查找,大大较少IO次数
+(2)充分利用外存对*批量访问*的高效支持,将此特点转化为优点
+(3)每下降一层,都以*超级节点*为单位,读入*一组*关键码
+
+(4)具体多大一组?视磁盘的数据块大小而定,m = #keys / pg
+(5)例子
+	目前多数数据库系统采用 m=200~300, 若有1G(10^9)个记录
+	若取超级节点的规模m = 256,则每次查找只需log(256,10^9)<=4 次I/O
+	
+4.B树严格定义
+
+### 参考资料
+1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
