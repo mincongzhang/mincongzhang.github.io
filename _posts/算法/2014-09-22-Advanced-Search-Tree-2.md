@@ -8,7 +8,7 @@ tags: ["C++","算法","数据结构"]
 
 这篇文章记录了我在edX上Data Structures and Algorithms学习高级搜索树的笔记.
 
-### B树
+### B树(B-Tree)Intro
 1.动机:不同存储级别之间在访问速度上的巨大差异,实现高效的I/O
 
 2."640k ought to be enough for anybody." - B.Gates,1981 这句话略短视,但在B树中是真理
@@ -40,3 +40,15 @@ tags: ["C++","算法","数据结构"]
 (2)典型的存储系统采用批量式访问:
 以页(page)或块(block)为单位,使用缓冲区//<stdio.h>
 (RAM-pages-DISK)
+
+### B树(B-Tree)
+1.结构
+(1)每个节点可能有多个分叉
+(2)所有底层节点的深度完全一致(理想平衡)
+(3)显得更宽更矮
+
+2.B-Tree
+(1)平衡的多路(multi-way)搜索树
+(2)若干个二路节点经适当合并可得*超级节点*
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree.jpg" alt="LCS" title="LCS" height="200"/>

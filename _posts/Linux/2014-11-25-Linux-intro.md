@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Linux title 
+title: Linux Intro 
 category: Linux
 description: Linux description
 tags: ["Linux"]
 ---
 
 
-start here
+TBC...
