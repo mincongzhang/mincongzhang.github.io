@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 高级搜索树2(Advanced search tree 2)
+title: 高级搜索树2:B树 (Advanced search tree 2: B-Tree)
 category: 算法
 description: 链表
 tags: ["C++","算法","数据结构"]
@@ -95,6 +95,36 @@ tags: ["C++","算法","数据结构"]
 3.使用不完全填充的块来加速插入和删除
 4.通过优雅的遍历算法来保持索引平衡
 5.B树通过保证内部节点至少半满来最小化空间浪费。一棵B树可以处理任意数目的插入和删除。
+
+### 代码实现
+1.B树的节点类
+
+```
+/* BTNode */
+
+template <typename T> struct BTNode { //B树节点
+	BTNodePosi(T) parent; //父
+	
+	Vector<T> key;  	  			//关键码,数值向量
+	Vector< BTNodePosi(T) > child;	//孩子向量(长度总比key多一)
+	
+	BTNode(){parent = NULL; child.insert(0,NULL);}
+	BTNode(T e, BTNodePosi(T) lc=NULL, BTNodePosi(T) rc=NULL){
+		//作为根节点,而且初始时仅一个关键码,以及两个孩子
+		parent = NULL;	
+		key.insert(0,e);
+		child.insert(0,lc);
+		child.insert(1,rc);
+		
+	}
+	
+}
+
+```
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_BTNode.jpg" alt="LCS" title="LCS" height="200"/>
+
+
 
 
 ### 参考资料

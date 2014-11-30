@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 高级搜索树(Advanced search tree)
+title: 高级搜索树:伸展树(Advanced search tree: Splay Tree)
 category: 算法
 description: 链表
 tags: ["C++","算法","数据结构"]
