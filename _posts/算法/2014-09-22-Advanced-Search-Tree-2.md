@@ -2,7 +2,7 @@
 layout: post
 title: 高级搜索树2:B树 (Advanced search tree 2: B-Tree)
 category: 算法
-description: 链表
+description: 高级搜索树
 tags: ["C++","算法","数据结构"]
 ---
 
