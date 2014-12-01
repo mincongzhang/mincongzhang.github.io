@@ -143,8 +143,17 @@ template <typename T> class BTree{	//B树
 		bool insert( const T & e );			//插入
 		bool remove( const T & e );			//删除
 };
+```
+
+2.B树:查找
 
 ```
+/*B-Tree:Search*/
+//诀窍:只载入必需的节点,尽可能减少I/O操作
+//假设根节点常驻于内存,其他存在于外存之中
+
+```
+
 
 ### 参考资料
 1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
