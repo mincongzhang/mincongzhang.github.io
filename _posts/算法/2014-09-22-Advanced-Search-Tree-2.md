@@ -116,16 +116,35 @@ template <typename T> struct BTNode { //B树节点
 		child.insert(0,lc);
 		child.insert(1,rc);
 		
+		if(lc) lc->parent = this;
+		if(rc) rc->parent = this;
 	}
-	
 }
-
 ```
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_BTNode.jpg" alt="LCS" title="LCS" height="200"/>
 
+```
+/* BTree */
 
+#define BTNodePosi(T) BTNode<T>*	//B树节点位置
 
+template <typename T> class BTree{	//B树
+	int _size;	//关键码总数
+	int _order;	//阶次
+	BTNodePosi(T) _root; //根
+	BTNodePosi(T) _hot;	 //search()最后访问的非空节点位置
+	
+	void solveOverFlow( BTNodePosi(T) );	//因插入而上溢后的分裂处理
+	void solveUnderFlow( BTNodePosi(T) );	//因珊瑚而下溢后的合并处理
+	
+	public:
+		BTNodePosi(T) search( const T & e );//查找
+		bool insert( const T & e );			//插入
+		bool remove( const T & e );			//删除
+};
+
+```
 
 ### 参考资料
 1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
