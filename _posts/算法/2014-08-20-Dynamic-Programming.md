@@ -3,7 +3,7 @@ layout: post
 title: 动态规划(Dynamic Programming)
 category: 算法
 description: 动态规划
-tags: ["C++","算法","数据结构"]
+tags: ["C++","算法"]
 ---
 
 这篇文章记录了我学习动态规划找到的一些有用的资料以及edX上清华Data Structures第一章的笔记.
