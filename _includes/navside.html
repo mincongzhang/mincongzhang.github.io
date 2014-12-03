@@ -5,8 +5,12 @@
       <a class="pjaxlink" href="/"><img src="{{ site.gavatar }}" class="img-rounded avatar"></a>
       <br><br>
       <ul class="nav nav-pills nav-stacked">
+<<<<<<< HEAD
 	  {% site.categories.reverse.each do |category| %} 
        <!--  {% for category in site.categories %}-->
+=======
+        {% for category in site.categories %}
+>>>>>>> parent of 50ea540... try resort nav bar
           <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
         {% endfor %}
         <li><a href="#tags" data-toggle="tab">{{ site.locals.tags }}</a></li>
