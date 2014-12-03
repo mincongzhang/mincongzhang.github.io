@@ -5,6 +5,7 @@
       <a class="pjaxlink" href="/"><img src="{{ site.gavatar }}" class="img-rounded avatar"></a>
       <br><br>
       <ul class="nav nav-pills nav-stacked">
+	  <!-- {%site.categories.reverse.each do |category|%} -->
         {%site.categories.reverse.each do |category|%}
           <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
         {% endfor %}
