@@ -14,3 +14,9 @@ tags: ["ruby on rails"]
 M(Model):网站的模型, 算法之类
 V(View): 图形界面, 前端
 C(Controller): 控制器, 转发请求,对请求进行处理
+
+
+遇到的问题和对应的解决方案:
+http://stackoverflow.com/questions/27139007/cant-migrate-database-after-scaffold-section-2-2-ruby-on-rails-tutorial-michae
+
+http://stackoverflow.com/questions/17285873/couldnt-find-file-jquery-in-rails-project
