@@ -38,8 +38,8 @@ tags: ["C++","算法","数据结构"]
 (坐火车去采购粉笔,采购1支和采购10000支时间成本一样)
 
 (2)典型的存储系统采用批量式访问:
-以页(page)或块(block)为单位,使用缓冲区//<stdio.h>
-(RAM-pages-DISK)
+以页(page)或块(block)为单位,使用缓冲区(<stdio.h>...)
+(RAM<-pages->DISK)
 
 ### B树(B-Tree)
 1.结构
@@ -51,7 +51,7 @@ tags: ["C++","算法","数据结构"]
 (1)平衡的多路(multi-way)搜索树
 (2)若干个二路节点经适当合并可得*超级节点* (如图2代合并得4路分支)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree.jpg"  height="200"/>
 
 3.多路(multi-way)有什么用呢
 (1)*多级*储存系统中使用B树,可针对外部查找,大大较少IO次数
@@ -76,7 +76,7 @@ tags: ["C++","算法","数据结构"]
 (2)内部节点的下限:
 	-分支数n+1也不能太少
 	-一般节点:上整[m/2] <= n+1
-	-树根节点:2 <= n+1 (此后理解和回答)
+	-树根节点:2 <= n+1 (此后理解和回答,在"插入-分裂"出解答)
 (3)故亦称作(上整[m/2],m)-树
 (4)总结:保证内部节点至少半满来最小化空间浪费
 *上整:ceil(x)
@@ -123,7 +123,7 @@ template <typename T> struct BTNode { //B树节点
 }
 ```
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_BTNode.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_BTNode.jpg"  height="200"/>
 
 ```
 /* BTree */
@@ -176,7 +176,7 @@ template <typename T> BTNodePosi(T) BTree<T>::search( const T & e ){
 }
 ```
 
-2.B树:查找 - 复杂度分析
+3.B树:查找 - 复杂度分析
 (1)同一层的vector的查找,使用的是顺序查找而不是二分查找;
    原因:每一个节点的大小大概是kb级的,所含关键码大概100个,实验结果表明二分查找在此类中效率更低
 
@@ -188,6 +188,50 @@ template <typename T> BTNodePosi(T) BTree<T>::search( const T & e ){
    相对于BBST: (log(m,N)-1)/log(2,N) = 1/log(2,m)
    若取m=256,树高(I/O)次数约降低至1/8
 
+4.B树:插入
+
+```
+/*B-Tree:Search*/
+
+template <typename T>
+bool BTree<T>::insert( const T & e ){
+
+	BTNodePosi(T) v = search(e);//这里会返回_hot
+	if(v) return false;//确认e不存在
+	
+	Rank r = _hot->key.search(e);//在节点_hot中确定插入位置
+	_hot->key.insert(r+1,e);     //紧随其后插入
+	//关键部分!分支需要增加,增加在插入关键码的右孩子,
+	//但是节点是位于底层的叶节点,所以直接在分支vector最后增加一个NULL
+	_hot->child.insert(r+2,NULL);//创建一个空子树指针
+	
+	_size++;
+	
+	//如发生上溢(overflow),需做*分裂*
+	//可能下属分支增加,导致分支总数超过B树阶次m
+	solveOverflow(_hot);
+	
+	return true;//插入成功
+
+}
+
+```
+
+5.B树:插入-分裂
+(1)分裂方法如下图:
+节点的[下界,上界] = [ceil(m/2),m]
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_split_when_insert.jpg" height="200"/>
+
+(2)问题:父节点中又插入了新的节点(有可能上溢)
+   解决方法:向上传播,继续分裂,直到根节点
+   
+(3)分裂到根:根节点已经没有父节点,提升的那个关键码作为父节点(根节点)
+   由于分裂,这时根节点只有两个分支<=ceil(m/2)
+   
+(4)复杂度:O(1)*h = O(h)
+
+6.B树:删除
 
 ### 参考资料
 1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
