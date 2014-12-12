@@ -165,10 +165,10 @@ template <typename T> BTNodePosi(T) BTree<T>::search( const T & e ){
 		
 		if ( 0<=r && e == v->key[ r ] ) return v; //成功则返回
 		
+		//不成功的话,向量查找r=key.search(e)得到的是不大于目标关键码的最大值
 		_hot = v;
-		v = v->child[ r+1 ];//沿引用转至对应的下层子树,并载入其根I/O
-		
-		//r+1有玄机,明天再看.........
+		//沿引用转至对应的下层子树(右孩子),并载入其根I/O
+		v = v->child[ r+1 ];
 		
 	}//若因!v而退出,则意味着抵达外部节点
 	
