@@ -153,6 +153,27 @@ template <typename T> class BTree{	//B树
 //诀窍:只载入必需的节点,尽可能减少I/O操作
 //假设根节点常驻于内存,其他存在于外存之中
 
+template <typename T> BTNodePosi(T) BTree<T>::search( const T & e ){
+    BTNodePosi(T) v = _root; 
+	_hot = NULL;
+	
+	while( v ){ //逐层查找
+	
+		//在当前节点对应的向量中顺序查找(调用vector的查找接口)
+		//Vector<T> key;  //关键码,数值向量
+		Rank r = v->key.search(e); 
+		
+		if ( 0<=r && e == v->key[ r ] ) return v; //成功则返回
+		
+		_hot = v;
+		v = v->child[ r+1 ];//沿引用转至对应的下层子树,并载入其根I/O
+		
+		//r+1有玄机,明天再看.........
+		
+	}//若因!v而退出,则意味着抵达外部节点
+	
+	return NULL; //失败
+}
 ```
 
 
