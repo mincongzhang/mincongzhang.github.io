@@ -274,7 +274,23 @@ bool BTree<T>::remove( const T & e ){
    以及:      ceil(m/2)-1个分支    (B树约定至少ceil(m/2)个分支)
 
 (2)解决方法1:旋转
+   左/右兄弟(sibling)节点的关键码(key)数量 >= [ceil(m/2)-1]+1 = ceil(m/2)
+   从兄弟节点借出一个关键码,但需要从父节点处旋转
+   (保证搜索树的性质,左子树<=父节点<=右子树)
+   如图:
+   
+   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_delete_and_rotate.jpg" height="200"/>
 
+(3)解决方法2:合并
+   左/右兄弟(sibling)不存在,或所含关键码均不足ceil(m/2)个
+   如图,将父节点关键码取出,并且与两个子节点合并
+   不能直接合并两个子节点,因为这样就违背了搜索树顺序排列的原则
+   父节点关键码合并之后,相当于删除了一个关键码,需要往上一层解决删除问题
+   
+   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_delete_and_merge.jpg" height="200"/>
+   
+   
+   
 
 ### 参考资料
 1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
