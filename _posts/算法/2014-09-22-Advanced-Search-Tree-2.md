@@ -75,12 +75,12 @@ tags: ["C++","算法","数据结构"]
 	-不超过m(或n+1)个分支
 (2)内部节点的下限:
 	-分支数n+1也不能太少
-	-一般节点:上整[m/2] <= n+1
+	-一般节点:ceil(m/2) <= n+1
 	-树根节点:2 <= n+1 (此后理解和回答,在"插入-分裂"出解答)
-(3)故亦称作(上整[m/2],m)-树
+(3)故亦称作(ceil(m/2),m)-树
 (4)总结:保证内部节点至少半满来最小化空间浪费
-*上整:ceil(x)
-*(x,y)树就是,每个节点最少3个分支最多5个分支
+
+*(x,y)树就是,每个节点最少x个分支最多y个分支
 
 (4)例子
 	-m=5,(3,5)-树
@@ -232,6 +232,49 @@ bool BTree<T>::insert( const T & e ){
 (4)复杂度:O(1)*h = O(h)
 
 6.B树:删除
+
+```
+template <typename T>
+bool BTree<T>::remove( const T & e ){
+
+	BTNodePosi(T) v = search(e);
+	if(!v) return false;//确认e的存在
+	
+	//确定e在v中的秩(位置),
+	//如果v是叶节点,child=null,那么r就是e所在的位置
+	//如果v不是叶节点(有child),那么r就是是不大于目标关键码的最大值
+	Rank r = v->key.search(e);
+	
+	if(v->child[0]){ //若v不是叶节点(有child),
+	
+		BTNodePosi(T) u = v->child[r+1];//在右子树中一直向左
+		
+		//找到e的后继(succ)(必属于某叶节点)
+		while( u->child[0] ) u = u->child[0];
+		
+		//交换
+		v->key[r] = u->key[0];
+		v = u;//将u所在的Posi赋给v,之后方便删除其中的第0个值
+		r = 0;//交换后e在0的位置    
+	}
+	
+	//至此,经过交换,v必然位于最底层,且其中第r个关键码就是待删除者
+	v->key.remove(r);
+	v->child.remove(r+1);//删除对应的分支(其实child都是null,可删除任何一个)
+	_size--;
+	
+	solveUnderflow(v);//可能突破下限,称为下溢
+	return true; //如果有必要,需做旋转或合并
+}
+```
+
+7.B树:删除 - 旋转
+(1)节点v下溢时,
+   必恰好包含:ceil(m/2)-2个关键码  (B树约定至少ceil(m/2)-1个关键码)
+   以及:      ceil(m/2)-1个分支    (B树约定至少ceil(m/2)个分支)
+
+(2)解决方法1:旋转
+
 
 ### 参考资料
 1.从B 树、B+ 树、B* 树谈到R 树:http://blog.csdn.net/v_july_v/article/details/6530142
