@@ -36,6 +36,9 @@ tags: ["C++","算法","数据结构"]
 (2)拓扑结构差异来自旋转操作(节点的父节点改变),
    AVL树为例,插入旋转O(1),删除可能会逐层向上引发O(logn)的旋转,导致拓扑结构剧烈变化
 (3)所以我们需要一种BBST,任何一次动态操作引发的结构变化量不会超过O(1) -- 红黑树
+
+### 所以红黑树到底是怎么使用,从而可以来表示历史版本?
+红黑树实现了"任何一次动态操作引发的结构变化量不会超过O(1)"之后,要怎么玩?
   
 ### 红黑树(Red–black Tree) 结构
 1.红黑树历史
@@ -59,4 +62,90 @@ tags: ["C++","算法","数据结构"]
 (2)可观察到底层节点平齐
 (3)黑节点与其红孩子视作(关键码,然后合并为)超级节点
 (4)无非四种组合:黑(1个节点2个分支), 黑红, 红黑, 红黑红(3个节点4个分支)
-(5)红黑树 == B树 (2,4)树
+(5)红黑树 == (2,4)树 B树 
+
+4.平衡性
+(1)由等价性,既然B树是平衡的,红黑树自然也是
+(2)B树的高度 == 黑节点的总数 (红黑树的黑高度)
+
+5.接口定义
+
+```
+/*RedBlack*/
+
+template <typename T> class RedBlack : public BST<T> { //红黑树
+  public: 
+    //BST::search()等其余接口可直接沿用
+	BinNodePosi(T) insert( const T & e ); //插入(重写)
+	bool remove( const T & e );   		  //删除(重写)
+	
+  protected: //内部接口
+    void solveDoubleRed( BinNodePosi(T) x );  //双红修正
+    void solveDoubleBlack( BinNodePosi(T) x );//双黑修正
+	int updateHeight( BinNodePosi(T) x );	  //更新节点x的高度(不是常规的高度,是黑高度)
+};
+
+template <typename T> int RedBlack<T>::updateHeight( BinNodePosi(T) x ){
+	x->height = max( stature(x->lc),stature(x->rc) );
+	if(IsBlack(x)) x->height++; 
+	
+	return x->height;//只计黑节点
+}
+
+```
+
+
+### 红黑树(Red–black Tree) 插入(insert)
+1.双红缺陷(double red)
+  (1)拟插入关键码e
+  (2)按BST的常规算法插入
+  (3)将x染红,条件1,2,4满足,考虑条件3
+  (4)有可能双红(如图)
+  (5)x的祖父必然存在且一定是黑的,重点是其叔父
+  (6)针对*叔父*的颜色分两种情况处理
+
+```
+/*红黑树条件*/
+  (1)树根        :必为黑色
+  (2)外部节点    :均为黑色
+  (3)其余节点    :若为红,则只能有黑孩子 (红之子,之父必黑)
+  (4)外部节点到根:途中黑节点数目相等    (黑深度)
+```
+  
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem.jpg" height="200"/>
+  
+2.第一种情况:叔父节点是黑色
+  
+2.算法实现
+
+```
+template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
+	//确认目标节点不存在(留意对_hot的设置)
+	BinNodePosi(T) & x = search(e); if(x) return x;
+	
+	//创建红节点x,以_hot为父,黑高度-1
+	x = new BinNode<T>(e,_hot,NULL,NULL,-1);
+	_size++;
+	
+	//感觉这里新建节点的时候也没有标明它的颜色啊?颜色信息存在哪?
+	
+	//如有必要,需做双红修正
+	solveDoubleRed(x);
+	
+	//返回插入的节点
+	return x?x:_hot->parent;   //这里什么时候会返回_hot的parent?它parent是啥?
+
+}//无论原树中是否存在e,返回时总有x->data == e
+```
+  
+  
+  
+  
+
+
+*到现在还不明白红黑树怎么表示历史版本...
+
+
+算法导论对R-B Tree的介绍：
+
+红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
