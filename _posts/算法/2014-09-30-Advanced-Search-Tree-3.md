@@ -169,6 +169,12 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
 (7)从红黑树的角度,只是节点颜色改变
   (染色次数变化可能logn,拓扑结构变化O(1))
 
+5.归纳
+(1)复杂度分析
+   -重构,染色均属常数时间的局部操作,只需统计其总次数
+   -每次插入,可在O(logn)时间内完成
+   -最多做:O(logn)次颜色染色;1次3+4重构
+(2)重构操作对持久化结构(persistent structures)很重要
 
 算法导论对R-B Tree的介绍：
 
