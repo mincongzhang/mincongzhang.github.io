@@ -38,8 +38,9 @@ tags: ["C++","算法","数据结构"]
 (3)所以我们需要一种BBST,任何一次动态操作引发的结构变化量不会超过O(1) -- 红黑树
 
 ### 所以红黑树到底是怎么使用,从而可以来表示历史版本?
-*变化量不会超过O(1)是什么意思?
+*变化量不会超过O(1)是什么意思? 只有一次3+4操作
 *红黑树实现了"任何一次动态操作引发的结构变化量不会超过O(1)"之后,要怎么玩?
+
   
 ### 红黑树(Red–black Tree) 结构
 1.红黑树历史
@@ -115,9 +116,7 @@ template <typename T> int RedBlack<T>::updateHeight( BinNodePosi(T) x ){
   
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem.jpg" height="200"/>
   
-2.第一种情况:叔父节点是黑色
-  
-2.算法实现
+2.算法框架
 
 ```
 template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
@@ -138,10 +137,22 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
 
 }//无论原树中是否存在e,返回时总有x->data == e
 ```
+
+3.第一种情况:叔父节点u是黑色
+(1)直接提升(lift)
+(2)参照AVL树,做局部3+4重构
+(3)重新染色,中间染黑,左右染红
   
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem2.jpg" height="200"/>
   
-  
+(4)双红缺陷调整前非法的原因:
+   -某个三叉节点中插入红关键码,使得原黑关键码不再居中(RRB或者BRR)
+(5)调整后的效果:
+   -新的四叉节点中,三个关键码的颜色改为RBR
+(6)拓扑结构的调整O(1)
+   -一蹴而就(3+4),无需进一步调整
  
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem3.jpg" height="200"/>
 
 
 算法导论对R-B Tree的介绍：
