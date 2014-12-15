@@ -154,6 +154,21 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
  
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem3.jpg" height="200"/>
 
+4.第二种情况:叔父节点u是红色
+(1)提升变换(lift)
+(2)超级节点发生上溢(overflow) (此时,修复红黑树的双红缺陷 == 修复B树的上溢缺陷)
+(3)居中(偏右)的关键码上移并插入父节点
+(4)从红黑树的角度看,就是节点颜色改变了
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem4.jpg" height="200"/>
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem5.jpg" height="200"/>
+
+(5)父节点由于插入了红色节点,继续recursive解决
+(6)从B树的角度看,拓扑结构改变
+(7)从红黑树的角度,只是节点颜色改变
+  (染色次数变化可能logn,拓扑结构变化O(1))
+
 
 算法导论对R-B Tree的介绍：
 
