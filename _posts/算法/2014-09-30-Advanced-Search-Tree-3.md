@@ -176,6 +176,39 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
    -最多做:O(logn)次颜色染色;1次3+4重构
 (2)重构操作对持久化结构(persistent structures)很重要
 
-算法导论对R-B Tree的介绍：
+### 红黑树(Red–black Tree) 删除(delete)
+1.更复杂,可利用提升(lifting)转换成B树看待,并且反过来理解过程
+2.依然关注重构操作,重构(reconstruction)次数都不超过常数O(1)
 
+3.算法框架
+
+```
+/*红黑树条件*/
+  (1)树根        :必为黑色
+  (2)外部节点    :均为黑色
+  (3)其余节点    :若为红,则只能有黑孩子 (红之子,之父必黑)
+  (4)外部节点到根:途中黑节点数目相等    (黑深度)
+```
+
+(1)首先按照BST常规算法,执行:
+r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
+
+(2)如果返回r,表示remove之后x由孩子r接替(如小标题4.下的图)
+   另一个孩子记作w(即黑的NULL)
+
+(3)这时条件1,2依然满足
+
+(4)但3和4不一定:
+   违背3:有可能出现两个连续的红色节点
+   违背4:若删除的是黑节点,途中黑节点数目可能不相等,如小标题4.下图的(b)
+
+4.若二者之一为红
+(1)3,4不难满足,如下图的(a)(b)
+(2)解决方法:将替代者r染黑即可(等于删除了一条虚边,外部节点黑深度保持原状)
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_delete_structure.jpg" height="200"/>
+
+5.双黑缺陷
+
+算法导论对R-B Tree的介绍：
 红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
