@@ -231,8 +231,14 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1-1.jpg" height="200"/>
 
-7.双黑缺陷(double-black)情况2:s(sibling)为黑色,两个孩子均为黑;p为红
+7.双黑缺陷(double-black)情况2-1:s(sibling)为黑色,两个孩子均为黑;p为红
+(1)s独自构成关键码,无法借出关键码
+(2)解决方法:合并(merge)(B树中的方法)
+   -从父节点取出关键码p,作粘合剂merge
+   -p所在的超级节点不会发生下溢,因为它本来为红,所属B树节点至少还有一个黑色节点
    
+(3)红黑树角度:
+   -s黑转红,p红转黑
    
 算法导论对R-B Tree的介绍：
 红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
