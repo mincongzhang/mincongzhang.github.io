@@ -229,5 +229,10 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (3)B树反观:
    -通过关键码的旋转,消除超级节点的下溢(underflow)(删除x后小于1个节点)
 
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1-1.jpg" height="200"/>
+
+7.双黑缺陷(double-black)情况2:s(sibling)为黑色,两个孩子均为黑;p为红
+   
+   
 算法导论对R-B Tree的介绍：
 红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
