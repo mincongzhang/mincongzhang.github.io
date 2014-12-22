@@ -202,7 +202,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
    违背原则3:有可能出现两个连续的红色节点
    违背原则4:若删除的是黑节点,途中黑节点数目可能不相等,如小标题4.下图的(b)
 
-4.若二者之一为红
+4.若二者(x和r)之一为红
 (1)3,4不难满足,如下图的(a)(b)
 (2)解决方法:将替代者r染黑即可(等于删除了一条虚边,外部节点黑深度保持原状)
 
@@ -214,12 +214,20 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (3)考察两个节点:
    -r的父亲: p = r->parent (也就是原树中x的父亲)
    -r的兄弟: s = r==p->lc? p->rc : p->lc
+(4)于是有四种情况
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem.jpg" height="200"/>
 
+6.双黑缺陷(double-black)情况1:s(sibling)为黑色,且至少有一个红孩子t
+(1)解决方法:
+   -"3+4"重构
+   -r保持黑;t和p染黑;s继承p的原色
+(2)调整后红黑树性质在全局得以恢复,删除完成
 
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1.jpg" height="200"/>
 
-
+(3)B树反观:
+   -通过关键码的旋转,消除超级节点的下溢(underflow)(删除x后小于1个节点)
 
 算法导论对R-B Tree的介绍：
 红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
