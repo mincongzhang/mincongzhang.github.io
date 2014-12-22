@@ -268,8 +268,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (1)每一删除操作,都可在O(logn)时间内完成,其中至多做:
    -O(logn)次重染色
    -一次3+4重构
-   -一次单旋
-   
+   -一次单旋   
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_conclusion.jpg" height="200"/>
 
