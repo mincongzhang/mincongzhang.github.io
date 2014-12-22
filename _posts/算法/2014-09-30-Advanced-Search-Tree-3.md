@@ -232,7 +232,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1-1.jpg" height="200"/>
 
 7.双黑缺陷(double-black)情况2-1:s(sibling)为黑色,两个孩子均为黑;p为红
-(1)s独自构成关键码,无法借出关键码
+(1)s独自构成关键码,无法借出关键码,发生下溢(underflow)
 (2)解决方法:合并(merge)(B树中的方法)
    -从父节点取出关键码p,作粘合剂merge
    -p所在的超级节点不会发生下溢,因为它本来为红,所属B树节点至少还有一个黑色节点
@@ -240,5 +240,39 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (3)红黑树角度:
    -s黑转红,p红转黑
    
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-1.jpg" height="200"/>
+   
+8.双黑缺陷(double-black)情况2-2:s(sibling)为黑色,两个孩子均为黑;p为黑
+(1)s独自构成关键码,无法借出关键码,发生下溢(underflow)
+(2)解决方法:合并(merge)(B树中的方法)
+   -从父节点取出关键码p,作粘合剂merge
+   -*关键点*p所在的节点是黑色,会再次发生下溢,难道会往上传播logn?
+   -不会:s黑转红,p颜色保持黑色不变
+
+*我的疑问:p以下的子树黑深度都减少了1,没变,但其他节点子树黑深度没变呀...
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-2.jpg" height="200"/>
+   
+9.双黑缺陷(double-black)情况3:s(sibling)为红色,两个孩子均为黑
+(1)s改作为p的父节点
+(2)zag(p)或者zig(p):红s转黑,黑p转红
+(3)但黑高度依然异常
+(4)p已转红,接下来就
+   -绝不会是8.中的情况
+   -只能是7.或者6.中的情况,根据它们在调整一轮
+   -红黑树就全局恢复
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem3.jpg" height="200"/>
+
+10.总结
+(1)每一删除操作,都可在O(logn)时间内完成,其中至多做:
+   -O(logn)次重染色
+   -一次3+4重构
+   -一次单旋
+   
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_conclusion.jpg" height="200"/>
+
+ 
 算法导论对R-B Tree的介绍：
 红黑树，一种二叉查找树，但在每个节点上增加一个存储位表示节点的颜色，可以是Red或Black。 通过对任何一条从根到叶子的路径上各个节点着色方式的限制，红黑树确保没有一条路径会比其他路径长出俩倍，因而是接近平衡的。
