@@ -257,3 +257,11 @@ int *ptr;
 
 what's wrong?
 The pointer is not intialised and the program will crash
+参考:http://mincongzhang.github.io/2014/07/21/Practice-on-Programming1/
+
+```
+int *ptr;
+ptr = new int;
+*ptr = 7;
+```
+

@@ -143,9 +143,9 @@ const string NAME = "school";
 (1)不可通过常量指针修改其指向的内容
 
 ```
- int n,m; 
- const int *p = &n; 
- *p = 5;//编译出错 
+int n,m; 
+const int *p = &n; 
+*p = 5;//编译出错 
 n = 4;//没问题 
 p = &m;//指向别的内容，没问题 
 ```
@@ -164,7 +164,9 @@ p = &m;//指向别的内容，没问题
 
 ### 动态内存分配
 
-1.C语言：malloc；C++：P = new T;
+1.
+C语言：malloc；
+C++：P = new T;
 分配出大小为sizeof(T)字节(byte)的内存空间，并将起始地址赋值给P
 
 ```
