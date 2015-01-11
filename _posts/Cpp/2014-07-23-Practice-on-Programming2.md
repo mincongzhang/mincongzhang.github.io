@@ -86,7 +86,7 @@ void CRect::Init(int w_,int h_){
 
 1.关键字：
 private：成员函数内被访问
-public:任何地方被访问
+public: 任何地方被访问
 protected：指定保护成员 
 
 2.没关键字成员缺省为私有成员
