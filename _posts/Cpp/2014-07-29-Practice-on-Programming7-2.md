@@ -243,7 +243,7 @@ int main(int argc,char * argv[]){ //argc记录字符串个数,argv[]记录字符
 	char c;
 	while(inFile.get(c)){ //每次读取一个字符
 		outFile.put(c);  //每次写入一个字符
-	}
+	}//当然这样是很没效率的
 	
 	outFile.close();
 	inFile.close();
