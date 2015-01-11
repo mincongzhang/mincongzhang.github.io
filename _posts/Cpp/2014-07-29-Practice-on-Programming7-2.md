@@ -102,3 +102,132 @@ fin.seekg(location,ios::beg);	//从头数location
 fin.seekg(location,ios::cur);	//从当前位置数location
 fin.seekg(location,ios::end);	//从尾部数location(location可以为负)
 ```
+
+6.二进制文件读写
+
+```
+int x = 10;
+fout.seekp(20,ios::beg);		//从beginning开始之后的20个字节的位置
+fout.write((const char*)(&x),sizeof(int));
+
+fin.seekg(0,ios::beg);
+fin.read((char*)(&x),sizeof(int));
+
+//二进制文件读写,直接写二进制数据,记事本看未必正确
+```
+
+```
+/*例子1,2:读,写*/
+//从键盘输入几个学生的姓名的成绩,并以二进制文件形式存起来
+//从存放的二进制文件读取
+
+#include<iostream>	//cin cout cerr之类的
+#include<fstream>	//文件流
+#include<cstring>
+
+using namespace std;
+
+class CStudent{
+  public:
+	char szName[20];
+	int nScore;
+}
+
+int main(){
+	Cstudent s;
+	
+	//写
+	ofstream OutFile("c:\\tmp\\students.dat",ios::out|ios::binary);
+	
+	while(cin>>s.szName>>s.nScore){
+		if(stricmp(s.szName,"exit")==0) break;
+		OutFile.write((char*)&s,sizeof(s));
+	}
+	
+	OutFile.close();
+	
+	//读
+	ifstream inFile("students.dat",ios::in|ios::binary)
+	
+	if(!inFile){
+		cout<<"error"<<endl;
+		return 0;
+	}
+	while(inFile.read((char*)&s,sizeof(s))){
+		int nReadedBytes = inFile.gcount();//看刚才读了多少字节
+		cout<<s.szName<<" "<<s.score<<endl;
+	}
+	
+	inFile.close();
+	
+	return 0;
+}
+```
+
+*注意:文本文件/二进制文件打开文件的区别
+(1)在Unix/Linux下,二者一致,没有区别;
+(2)在Windows下,文本文件是以"\r\n"作为换行符
+-读出时,系统会将0x0d0a只读入0x0a
+-写入时,对于0x0a系统会自动写入0x0d
+(3)所以最好读写一致(二进制写出就二进制读入)
+
+```
+/*例子3:同时读和写*/
+//将students.dat文件的Jane的名字改成Mike
+
+#include<iostream>	//cin cout cerr之类的
+#include<fstream>	//文件流
+#include<cstring>
+
+using namespace std;
+
+class CStudent{
+  public:
+	char szName[20];
+	int nScore;
+}
+
+int main(){
+	CStudent s;
+	fstream iofile(""c:\\tmp\\students.dat",ios::in|ios::out|ios::binary); //注意是fstream
+	if(!iofile){
+		cout<<"error";
+		return 0;
+	}
+	
+	iofile.seekp(2*sizeof(s),ios::beg);//定位写指针到第三个记录(数过2个记录)
+	iofile.write("Mike",strlen("Mike")+1);//???
+	iofile.seekg(0,ios::beg);//定位读指针到开头
+	
+	while(iofile.read((char*)&s,sizeof(s))){
+		cout<<s.szName<<" "<<s.nScore<<endl;
+	}
+	
+	iofile.close();
+	
+	return 0;
+}
+```
+
+```
+/*例子4:文件拷贝*/
+//用法示例:
+//mycopy src.dat dest.dat
+//即将src.dat拷贝到dest.dat
+//如果dest.dat原来就有,则原来的文件会被覆盖
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(int argc,char * argv[]){
+	if(argc!=3){
+		cout<<"File name missing!"<<endl;
+		return 0;
+	}
+	
+	ifstream inFile(argv[1],ios::binary|ios::in);  //打开文件用于读
+	
+}
+```
