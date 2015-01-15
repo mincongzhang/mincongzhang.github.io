@@ -239,3 +239,6 @@ CArray<int,40>和CArray<int,50>也是不同的模板类
 (4)模板类-派生-普通类
 
 ### string
+
+### input/output
+TBC
