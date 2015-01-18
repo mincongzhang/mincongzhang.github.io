@@ -19,11 +19,11 @@ tags: ["C++"]
 (2)使用堆就象是自己动手做喜欢吃的菜肴，比较麻烦，但是比较符合自己的口味，而且自由度大。
 
 ### Stack vs Heap in C++ 
-Stack: 存在于其中的data和pointer都是static的, 在{}之后都会自动清理, 比如: 
+Stack: 存在于其中的data和pointer都是static type的, 在{}之后都会自动清理, 比如: 
 int a = 1; 
 const char * str; 
  
-Heap: 存在于其中的pointer指向的data都是dynamics的, 不会自动清理, 需要分配内存以及事后删除, 如: 
+Heap: 存在于其中的pointer指向的data都是dynamic type的, 不会自动清理, 需要分配内存以及事后删除, 如: 
 "new" (stick sth to the heap), 事后需要"delete" 
 "malloc" (same as above), 事后需要"free"
 
