@@ -1,16 +1,13 @@
 ---
 layout: post
-title: 3DI面试的一道题
+title: 输出一个序列的powerset(所有子集)
 category: 笔记
-description: FactSet面试
-tags: ["面试"]
+description: 输出一个序列的powerset(所有子集)
+tags: ["C++"]
 ---
-
-从Interview里也能学到一些新思想嗯. 3DI是一个3D搜索/打印的创业公司,我的毕设就是帮他们做的一个"Scan to search"的3D搜索原型系统(prototype). 验证使用球谐函数描述3D模型(spherical harmonics)进行搜索的可行性. 他们愿意留我继续工作, 但是他们需要申请license再提供工作签证, 时间比较长就不等了.
 
 ### 输出一个序列的powerset(所有子集)
 1.用bit
-因为毕设写rasterization的时候老玩bitset和01010的东西,所以这个方法感觉挺好,对int值的移位(shift)效率还是比较高的
 
 ```
 #include <iostream>
@@ -39,7 +36,7 @@ int main(){
 ```
 
 2.递归
-Interviewer说他的方法是递归,然后解释了一下,我记不太清他的方法了...网上又找了一个递归法
+一个递归法
 
 ```
 #include <iostream>
