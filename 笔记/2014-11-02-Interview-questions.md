@@ -11,6 +11,9 @@ tags: ["面试"]
 2.linux下如何修改进程优先级？（nice命令的使用）。
 3.进程调度算法，有哪些算法比较难实现？
 4.多线程的适用场景是什么？为啥要用多线程？
+5. give a situation that can cause deadlock, how to solve this
+see "deadlock" in http://antonym.org/2010/01/threading-with-boost---part-ii-threading-challenges.html
+
 
 ### 数据结构
 1.Hash
@@ -39,5 +42,4 @@ tags: ["面试"]
 ### 零散面试题整理
 1. 1. difference between const char * and char * const
 2. rotate string by k elements to the right in place.
-3. give a situation that can cause deadlock, how to solve this
 
