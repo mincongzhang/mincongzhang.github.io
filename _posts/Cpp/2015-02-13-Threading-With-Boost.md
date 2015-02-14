@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 用Boost玩线程 I: 创建线程(Threading With Boost - Part I: Creating Threads)
+title: 用Boost玩线程 I: 创建线程(Threading With Boost Part I: Creating Threads)
 category: Cpp
 description: Threading With Boost
 tags: ["C++"]
