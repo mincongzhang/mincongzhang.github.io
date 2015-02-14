@@ -9,7 +9,7 @@ tags: ["C++"]
 这个网站把Boost里Threading的玩法讲解的非常好, 搬运过来翻译一下.
 http://antonym.org/2009/05/threading-with-boost---part-i-creating-threads.html
 
-## 用Boost玩线程 - I: 创建线程(Threading With Boost - Part I: Creating Threads)
+## 用Boost玩线程 I: 创建线程(Threading With Boost Part I: Creating Threads)
 
 Boost是C++里的一组便携类库(portable class libraries)[1], 功能非常强大. 它能完成诸如日期/时间操作, 
 文件系统界面, 网络, 数值编程, 进程间通信以及很多其他工作.
