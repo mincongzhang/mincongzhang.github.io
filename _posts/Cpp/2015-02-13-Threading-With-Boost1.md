@@ -47,7 +47,12 @@ boost::this_thread::sleep(workTime);
 
 接着在`main()`函数里,我们等着工作线程(worker)完成,然后调用`join()`将线程中执行的结果加入回主线程. 这会让主线程sleep等待,直到工作线程(worker)完成.
 
-细心的读者会注意到
+细心的读者会想知道我们产生这么一个线程, 仅仅是让它等一段时间完成, 有什么好处呢? 确定那个连接了执行路径再把我们稳当地放回了连续的世界(sequential world)? 创建这么一个线程的目的是什么? 好吧, 到我们搞清楚怎么用同步机制(synchronisation mechanisms)之前, 这都是解释线程创立最直接了当的方法. 还有要知道怎么`join`线程也很重要, 我们调用`workerThread.join()`等待线程完成, 并且将结果同步回主线程. 
+
+下面的图例展示了例子的一般结构:
+
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/Cpp/Threading-With-Boost1_BoostThreadExample.png" height="200"/>
+
 
 
 reference:
