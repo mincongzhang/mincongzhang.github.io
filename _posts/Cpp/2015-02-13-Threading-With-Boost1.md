@@ -54,6 +54,7 @@ boost::this_thread::sleep(workTime);
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/Cpp/Threading-With-Boost1_BoostThreadExample.png" height="200"/>
 
 
+reminder:  1. producer/consumer problem  2. boost::notify_one
 
 reference:
 [1] portable class libraries: a class library that can run on various platforms.
