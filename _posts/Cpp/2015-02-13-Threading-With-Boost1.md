@@ -53,8 +53,11 @@ boost::this_thread::sleep(workTime);
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/Cpp/Threading-With-Boost1_BoostThreadExample.png" height="200"/>
 
+程序启动, 主线程在(a)运行, 然后在(b)处,主线程通过创建一个包含worker函数的线程对象, 产生worker线程. 这之后在(c)处, 主线程在线程上调用`join`. `join`会让主线程休眠(而且不会花费任何CPU时间), 直到worker线程完成. 一旦worker线程在(b)处创建, 它就会开始执行. 在(d)的某点, worker完成了. 完成的时候, 主线程和这个分支线程合并, 主线程就会醒过来然后继续运行, 并在(e)处完成退出. 以下每个例子都是按照这个流程运行的, 不同之处在于线程创建的方法. 
 
-reminder:  1. producer/consumer problem  2. boost::notify_one
+-----
+### 第1形态: 线程函数
+-----
 
 reference:
 [1] portable class libraries: a class library that can run on various platforms.
