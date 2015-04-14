@@ -14,3 +14,9 @@
 ### 说明
 
 模板来源于[yansu.org](http://yansu.org/)。
+
+
+TODO:  
+1. Multithreading
+2. DLL VS LIB
+3. Trie tree
