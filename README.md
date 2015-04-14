@@ -17,6 +17,6 @@
 
 
 TODO:  
-1. Multithreading
-2. DLL VS LIB
-3. Trie tree
+1. Multithreading  
+2. DLL VS LIB  
+3. Trie tree  
