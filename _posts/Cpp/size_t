@@ -1,0 +1,5 @@
+std::size_t can store the maximum size of a theoretically possible object of any type (including array). A type whose size cannot be represented by std::size_t is ill-formed (since C++14) On many platforms (an exception are systems with segmented addressing) std::size_t can safely store the value of any non-member pointer, in which case it is synonymous with std::uintptr_t.
+std::size_t is commonly used for array indexing and loop counting. Programs that use other types, such as unsigned int, for array indexing may fail on, e.g. 64-bit systems when the index exceeds UINT_MAX or if it relies on 32-bit modular arithmetic.
+When indexing C++ containers, such as std::string, std::vector, etc, the appropriate type is the member typedef size_type provided by such containers. It is usually defined as a synonym for std::size_t.
+
+ref:http://en.cppreference.com/w/cpp/types/size_t
