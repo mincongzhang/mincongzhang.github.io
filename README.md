@@ -19,4 +19,6 @@
 TODO:  
 1. Multithreading  
 2. DLL VS LIB  
-3. Trie tree  
+3. Trie tree(still need to refine algorithm and description)  
+4. std::hash and exp gained in working  
+5. std::size_t
