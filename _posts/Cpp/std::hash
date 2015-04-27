@@ -1,0 +1,23 @@
+quite handy to generate hash key
+
+```
+#include <boost/functional/hash.hpp>
+#include <iostream>
+#include <functional>
+#include <string>
+
+int main(){
+  std::string test = "test";
+  boost::hash<std::string> hash_fn;
+  unsigned int str_hash = hash_fn(test);
+  unsigned int mod = str_hash%16;
+  std::cout<<mod<<std::endl;
+
+  std::string test2 = "te1st";
+  unsigned int mod2 = hash_fn(test2)%16;
+  std::cout<<mod2<<std::endl;
+}
+
+
+
+```
