@@ -19,3 +19,4 @@ int main(){
 }
 ```
 
+What is vital is that a given ticker is only ever sent on one subject…..that way we ensure that it is never the case that two TPs attempt to write the same ticker to the cache at the same time, which would be a race condition.
