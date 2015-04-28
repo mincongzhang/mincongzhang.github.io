@@ -17,7 +17,5 @@ int main(){
   unsigned int mod2 = hash_fn(test2)%16;
   std::cout<<mod2<<std::endl;
 }
-
-
-
 ```
+
