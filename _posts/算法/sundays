@@ -53,3 +53,87 @@ main(int z, char **v){
 }
 
 ```
+
+```
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <stdlib.h>
+using namespace std;
+typedef map<int,int> MonthMap;
+typedef map<int,int>::value_type month_value;
+int main(){
+  //0 - 6: Sun - Sat
+  //30 days: 4,6,9,11
+  //31 days: 1,3,5,7,8,10,12
+  //28/29 days: 2
+  //How many Sundays fell on the first of the month during the twentieth century (1901.1.1 to 200\
+0.12.31)?
+  //  (The answer is 171, if the 1 Jan 1900 was taken as a Monday)
+
+  MonthMap leap_year;
+  MonthMap normal_year;
+  leap_year.insert(month_value(1,31));
+  leap_year.insert(month_value(3,31));
+  leap_year.insert(month_value(5,31));
+  leap_year.insert(month_value(7,31));
+  leap_year.insert(month_value(8,31));
+  leap_year.insert(month_value(10,31));
+  leap_year.insert(month_value(12,31));
+  leap_year.insert(month_value(4,30));
+  leap_year.insert(month_value(6,30));
+  leap_year.insert(month_value(9,30));
+  leap_year.insert(month_value(11,30));
+  normal_year = leap_year;
+  leap_year.insert(month_value(2,29));
+  normal_year.insert(month_value(2,28));
+
+  const int Y = 10000;
+  string input;
+  //cout<<"start yyyymmdd: "<<endl;
+  //getline(cin,input);
+  //int ymd = atoi(input.c_str());
+  //cout<<"test ymd:"<<ymd<<endl;
+  int ymd = 20001231;
+  int y = ymd/Y;
+  cout<<"End year:"<<y<<endl;
+
+  int init_ymd = 19010101;
+  int init_day = 0;
+  int init_y = init_ymd/Y;
+  cout<<"init year:"<<init_y<<endl;
+
+  int y_diff(y-init_y);
+  cout<<"Year diff:"<<y_diff<<endl;
+
+  int sun_count(0);
+  MonthMap::const_iterator map_iter;
+  for(int i=0;i<y_diff-1;++i){
+    //decide leap year
+    int cur_y = init_y + i;
+    if( (cur_y%100!=0 && cur_y%4==0) || (cur_y%100==0 && cur_y%400==0) ){ //Leap year
+      for(map_iter=leap_year.begin();map_iter!=leap_year.end();++map_iter){
+        int month_day = map_iter->second;
+        int mod = month_day % 7;
+        init_day += mod;
+        if (init_day >= 7)  init_day-=7;
+        if (init_day == 0) sun_count ++;
+        cout<<init_day<<endl;
+      }
+    }
+    //Normal year
+    for(map_iter=normal_year.begin();map_iter!=normal_year.end();++map_iter){
+        int month_day = map_iter->second;
+        int mod = month_day % 7;
+        init_day += mod;
+        if (init_day >= 7)  init_day-=7;
+        if (init_day == 0) sun_count ++;
+    }
+  }
+
+  cout<<"Sundays: "<<sun_count<<endl;
+  //////////Use offset for month
+}
+
+```
