@@ -3,3 +3,20 @@
   //28/29 days: 2
   //How many Sundays fell on the first of the month during the twentieth century (1901.1.1 to 2000.12.31)?
   //  (The answer is 171, if the 1 Jan 1900 was taken as a Monday)
+
+
+```
+int d[12]={3,0,3,2,3,2,3,3,2,3,2,3};
+main(){
+  int b=0,c=0,y=1900,m;
+  for(;y<2001;y++)
+    {
+      for(m=0;m<12;m++)
+        {
+          if(b==6&&y>1900)c++;//b==6 means sunday
+          b=(b+d[m]+(m==1&&(!y%400||(!y%4&&y%100))))%7;
+        }
+    }
+  printf("%d\n",c);
+}
+```
