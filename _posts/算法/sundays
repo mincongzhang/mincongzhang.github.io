@@ -8,16 +8,16 @@
 ```
 int d[12]={3,0,3,2,3,2,3,3,2,3,2,3};
 main(){
-  int b=0,c=0,y=1900,m;
+  int b=0,count=0,y=1900,m;
   for(;y<2001;y++)
     {
       for(m=0;m<12;m++)
         {
-          if(b==6&&y>1900)c++;//b==6 means sunday
+          if(b==6&&y>1900)count++;//b==6 means sunday
           b=(b+d[m]+(m==1&&(!y%400||(!y%4&&y%100))))%7;
         }
     }
-  printf("%d\n",c);
+  printf("%d\n",count);
 }
 ```
 
