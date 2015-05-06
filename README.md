@@ -23,3 +23,4 @@ TODO:
 4. std::hash and exp gained in working  
 5. std::size_t  
 6. sundays counting algorithm
+7. play with #define y(x) (x/10000)
