@@ -6,7 +6,62 @@ description: Practice on Programming笔记
 tags: ["C++"]
 ---
 
-### 函数指针和命令行参数(看了但是没做笔记,mark一下)
+### 函数指针和命令行参数(缺命令行参数的笔记,mark)
+1.函数指针(function pointer)
+指向函数入口地址(占内存区域的起始地址)
+
+2.定义形式
+类型名 (* 指针变量名)(参数类型1,参数类型2,...);
+
+```
+#include <stdio.h>
+void PrintMin(int a,int b){
+	if(a<b)
+		printf("%d",a);
+	else
+		printf("%d",b);
+}
+
+int main(){
+	void (* pf)(int,int);
+	int x=4,y=5;
+	pf = PrintMin;
+	pf(x,y);
+	return 0;
+}
+```
+
+3.函数指针和qsort库函数
+
+```
+void qsort(void *base,int nelem,unsigned int width,
+		   int (* pfCompare)(const void *,const void *));
+)
+
+base:数组起始地址
+nelem:元素个数
+width:每个元素大小
+最后是compare函数
+```
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int MyCompare(const void *elem1,const void *elem2){//输入必须是void指针
+	unsigned int * p1, * p2;
+	p1 = (unsigned int*) elem1; //强制转换成unsigned int指针
+	return (*p1 % 10) - (*p2 % 10);
+}
+
+#define NUM 5
+int main(){
+	unsigned int an[NUM] = {8,123,11,10,4};
+	qsort(an,NUM,sizeof(unsigned int),MyCompare);
+	return 0;
+}
+
+```
 
 ### 位运算 (Bitwise operation?)
 
