@@ -104,6 +104,27 @@ void List<T>::insertSort(Posi(T) p,int n){
 (7)最坏情况,逆序对总数n^2,复杂度O(n^2+n)=O(n^2)
 
 
+### 桶/计数排序(Bucket sort/Counting sort)
+1.算法性能不再完全取决于输入的规模,也就是序列的长度n; 同时也取决于序列元素的取值范围,记作M(用来表示过散列表的长度)
+
+2.渐进时间复杂度:O(M+n), 或者O(max(M,n))
+
+3.待排序元素的取值范围越有限,算法的优势越明显
+
+4.英文大写字母的排序(存在大量重复):
+(1)表长M取作26,遍历输入集,统计出现次数就行了(和我3D搜索里发明的rasterization算法一样)
+(2)以上这一步骤也称作分配:distribution;还有一个accumulation是累计值(积分)
+(3)图像处理里的histogram equalization也用到了
+(4)通过累计值accumulation可得到输出序列中对应区间范围
+
+### Radix Sort
+http://en.wikipedia.org/wiki/Radix_sort
+
+
+### Heap Sort
+
+### Tournament Sort
+
 ### 排序算法对比
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/fZkqGaPuYPA?rel=0" frameborder="0" allowfullscreen></iframe>
