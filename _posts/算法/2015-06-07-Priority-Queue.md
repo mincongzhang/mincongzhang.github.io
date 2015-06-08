@@ -41,5 +41,87 @@ struct PQ {   //Priority queue
 (2)但是BBST却过于强大,远超出需求,因为只需要getMax和delMax,不需要完全遍历搜索.
 (3)若只需查找极值元素,不必维护所有元素之间的全序关系,偏序足矣
 
-### 完全二叉堆
+### 完全二叉堆(Complete Binary Heap):结构
+1.完全二叉树(Complete Binary Tree):是平衡因子处处非负的AVL树
+2.结构性:
+(1)逻辑上,等同于完全二叉树
+(2)物理上,直接借助向量实现
+3.就是按照层次遍历(level traverse)平铺成的vector
 
+```
+#define Parent(i) ( (i-1)>>1 )  //(i-1)/2
+#define LChild(i) ( 1+(i<<1) )  //1 + i*2 奇数
+#define RChild(i) ( (1+i)<<1 )  //(1+i)*2 偶数
+```
+
+4.融合
+
+```
+//PQ_ComplHeap = PQ + Vector
+
+typedef int Rank;
+
+template <typename T>
+class PQ_complHeap : public PQ<T>, public Vector<T>{
+
+protected:
+	Rank precolateDown( Rank n, Rank i );  //下滤  //precolate 滤,渗透
+	Rank percolateUp  ( Rank i );		   //上滤
+	void heapify      ( Rank n );          //Floyd建堆算法
+
+public:
+	PQ_ComplHeap( T* A, Rank n ){	//批量构造
+		copyFrom( A, 0, n );
+		heapify( n );
+	}
+	
+	void insert( T );			//按照比较器确定的优先级次序,插入词条
+	T getMax(){ return _elem[0]; }	//读取优先级最高的词条
+	T delMax();  					//删除优先级最高的词条
+```
+
+5.堆序性
+(1)任何节点,在数值上,都不会超过它的父亲
+if( 0<i )  H[i] <= H[ Parent(i) ]
+(2)故H[0]即为全局最大元素
+
+```
+PQ_ComplHeap<T>::getMax(){ return _elen[0]; }
+```
+
+### 完全二叉堆(Complete Binary Heap):插入与上滤
+1.为插入词条e,只需将e作为末元素接入向量
+(1)结构性自然保持
+(2)若堆序性也亦未破坏,则完成(但是未必)
+(3)若堆序性被破坏, 只能是e与其父节点违反堆序性, e与其父节点换位, (若堆序性因此恢复,则完成,否则再来一次)
+
+2.以上过程,亦所谓上滤(percolate up)(lets call it "move up" =_=)
+
+3.实现
+
+```
+template <typename T> void PQ_ComplHeap<T>::insert( T e ){  //插入
+	Vector<T>::insert( e );
+	percolateUp( _size-1 );
+}
+
+template <typename T>  //对第i个词条实施上滤, i<_size
+Rank PQ_ComplHeap<T>::percolateUp( Rank i ){
+	while( ParentValid(i) ){				//只要i有父亲,尚未抵达堆顶,则
+		Rank j = Parent(i);					//将i之父记作j
+		if( lt(_elem[i],_elem[j]) ) 		//_elem[i]<_elem[j]
+			break;							//一旦父子不再逆序,上滤即完成
+		swap( _elem[i],_elem[j] );			//否则,交换父子位置,上升一层
+		i = j;
+	}
+	
+	return i;//返回上滤最终抵达的位置
+}
+```
+
+4.效率
+(1)完全二叉树是理想平衡二叉树,所以所需时间就是level的层数, 或者按二叉搜索反向看,就是O(logn)
+(2)常系数还能改进:
+-swap有三次赋值操作,所以就3*logn
+-将插入词条e作备份,直到找到最终要替换的节点再swap
+-最终3*logn变成(logn+2),2是两次赋值操作
