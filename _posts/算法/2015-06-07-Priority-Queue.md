@@ -125,3 +125,39 @@ Rank PQ_ComplHeap<T>::percolateUp( Rank i ){
 -swap有三次赋值操作,所以就3*logn
 -将插入词条e作备份,直到找到最终要替换的节点再swap
 -最终3*logn变成(logn+2),2是两次赋值操作
+
+### 完全二叉堆(Complete Binary Heap):删除与下滤
+1.只能获取或删除最大元素
+2.getMax()只是常数的时间O(1)
+
+3.delMax():下滤
+(1)摘除向量首元素,代之以末元素e(保持结构性,破坏堆序性)
+(2)e与孩子中的*大者*交换(这样大的才能上去)
+(3)一直进行下去
+
+4.实现
+
+```
+template <typename T>
+PQ_CompHeap<T>::delMax(){
+	T max_elem = _elem[0];
+	_elem[0] = _elem[--_size]; //末词条和首词条替换
+	percolateDown(_size,0);	   //对新堆顶实施下滤
+	return max_elem;	       //返回备份的最大词条
+}
+
+//原视频代码感觉不好用,且提到的宏没有给出,以下给出改进版
+
+template <typename T>	//对前n个词条中的第i个实施下滤, i<n
+Rank PQ_ComplHeap<T>::percolateDown( Rank n,Rank i ){
+
+	Rank j=getLargerChild(_elem,n,i);	//should be current max child, if _elem[i] smaller that its children?
+	while( i != j ){
+		swap(_elem[i],_elem[j]);
+		i = j;
+		j=getLargerChild(_elem,n,i);
+	}
+	
+	return i;
+}
+```
