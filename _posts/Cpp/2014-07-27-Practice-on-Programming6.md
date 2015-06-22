@@ -63,6 +63,9 @@ int main(){
 	r.someVirtualFunction();//取决于r引用哪种类型的对象
 	return 0;
 }
+
+//Thought:
+//将Base引用作为函数的input, 扔不同的类(各种derived,和base)进去,就会有不同的function call效果
 ```
 
 5.多态的作用
