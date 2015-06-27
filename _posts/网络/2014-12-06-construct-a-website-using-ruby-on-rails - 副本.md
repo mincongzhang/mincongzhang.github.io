@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ruby on Rails学习笔记
-category: 网站
+category: 网络
 description: Ruby on Rails学习笔记
 tags: ["Rails"]
 ---

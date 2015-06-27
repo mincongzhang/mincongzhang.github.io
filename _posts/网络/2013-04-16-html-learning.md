@@ -1,7 +1,7 @@
 ---
 layout: post
-title: html深入学习(ajax,浏览器兼容性等)
-category: 网站
+title: html学习(ajax,浏览器兼容性等)
+category: 网络
 description: ajax,浏览器兼容性等
 tags: ["html","ajax"]
 ---
