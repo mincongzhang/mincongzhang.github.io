@@ -2,8 +2,9 @@
 爱立信Cross Function Team(XFT):
 Group project:一个10人左右小组其中7,8人是做开发,1,2人做测试. 接大项目(from scratch). 同时解一些bug和issue(可以scope out如果主project超出预想)
 需要dig into the code, get familliar with the code. 可能水很深.
-任务分配: (project analysis,communication,development,analysis)
-analysis: 大家一起分析项目需要的技术. 组长分配(或者组员按偏好take),按man/day计划时间,最后统计时间并且加一些buffer. 再提交上级
+任务分配: (project analysis,communication,development,testing(unit test/black/white test),deliver)
+analysis: 大家一起分析项目需要的技术. 组长分配(或者组员按偏好take),按man/day计划时间,最后统计时间并且加一些buffer. 再和上级交流.
+
 
 好处: 大家一起合作互相学习,互相督促. 接手新项目可以重新学习新知识. 每天有daily meeting可以跟进, manager很方便了解团队.
 
