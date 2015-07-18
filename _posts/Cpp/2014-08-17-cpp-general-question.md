@@ -265,3 +265,10 @@ ptr = new int;
 *ptr = 7;
 ```
 
+### 28. Header only?
+从boost库学到的:
+Most Boost libraries are header-only: 
+they consist entirely of header files containing templates and inline functions, and require no separately-compiled library binaries or special treatment when linking.
+我的理解:一般写template都得全部写到header里. 非template如果不写到header里,编译的时候就会被编译成.o的文件(object),然后需要链接这些object来使用
+编译器将每一个源文件.cpp都编译成一个目标文件.o。目标文件里面有符号表，记录着函数和它所用到的符号、全局变量等等。
+http://segmentfault.com/q/1010000002982186
