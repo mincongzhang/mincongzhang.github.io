@@ -1,7 +1,10 @@
 http://www.lintcode.com/en/problem/single-number/
+```
+/*
 "^": XOR
 0101^1111 = 1010 
-```
+*/
+
 class Solution {
 public:
     int singleNumber(vector<int> &A) {
@@ -17,3 +20,5 @@ public:
 ```
 
 http://www.lintcode.com/en/problem/single-number-ii/
+http://www.jiuzhang.com/solutions/single-number-ii/
+http://blog.csdn.net/imabluefish/article/details/38822061
