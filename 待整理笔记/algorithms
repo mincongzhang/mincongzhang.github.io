@@ -1,0 +1,16 @@
+http://www.lintcode.com/en/problem/single-number/
+
+```
+class Solution {
+public:
+    int singleNumber(vector<int> &A) {
+        if(A.empty()) return 0;
+        
+        int ret;
+        for(vector<int>::const_iterator it = A.begin(); it != A.end(); ++it)
+            ret ^= *it;
+            
+        return ret;
+    }
+};
+```
