@@ -1,10 +1,3 @@
----
-layout: post
-title: 别人的面经整理
-category: 笔记
-description: 面经
-tags: ["面试"]
----
 
 ### 进程线程
 1.进程间有几种通信方式
