@@ -1,5 +1,4 @@
 http://www.lintcode.com/en/problem/single-number/
-
 "^": XOR
 0101^1111 = 1010 
 ```
