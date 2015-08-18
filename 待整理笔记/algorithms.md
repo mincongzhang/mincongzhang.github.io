@@ -49,3 +49,8 @@ public:
     }
 };
 ```
+
+```
+//hash map
+//bloom filter
+```
