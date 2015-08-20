@@ -51,6 +51,29 @@ public:
 ```
 
 ```
-//hash map
-//bloom filter
+class Solution {
+public:
+    int singleNumberII(vector<int> &A) {
+        if(A.empty()) return 0;
+
+        int max(0),min(0);
+        for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
+            if(*it > max) max = *it;
+            if(*it < min) min = *it;
+        }
+
+
+        std::vector<bool> recorder(max-min+1,false);
+        int ret,pos;
+        for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
+            pos = *it - min;
+            if(!recorder[pos]){ 
+                ret = *it;
+                recorder[pos] = true;
+            }
+        }
+
+        return ret;
+    }
+};
 ```
