@@ -29,8 +29,8 @@ public:
     int singleNumberII(vector<int> &A) {
         if(A.empty()) return 0;
 
-        std::map<int,int> record;
-        std::map<int,int>::iterator record_it;
+        std::unordered_map<int,int> record;
+        std::unordered_map<int,int>::iterator record_it;
         int ret;
         for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
             record_it = record.find(*it);
