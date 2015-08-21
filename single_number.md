@@ -29,32 +29,6 @@ public:
     int singleNumberII(vector<int> &A) {
         if(A.empty()) return 0;
 
-        std::unordered_map<int,int> record;
-        std::unordered_map<int,int>::iterator record_it;
-        int ret;
-        for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
-            record_it = record.find(*it);
-            if( record_it == record.end() ){ //not found
-                ret = *it;
-                record.insert(std::pair<int,int>(*it,1));
-                continue;
-            }
-             
-            //found
-            record_it->second++;
-        }
-
-        return ret;
-    }
-};
-```
-
-```
-class Solution {
-public:
-    int singleNumberII(vector<int> &A) {
-        if(A.empty()) return 0;
-
         int max(0),min(0);
         for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
             if(*it > max) max = *it;
@@ -80,6 +54,33 @@ public:
 //[1 2 2 2]
 //ret will be 2
 
+```
+class Solution {
+public:
+    int singleNumberII(vector<int> &A) {
+        if(A.empty()) return 0;
+
+        std::unordered_map<int,int> record;
+        std::unordered_map<int,int>::iterator record_it;
+        for(vector<int>::iterator it = A.begin(); it != A.end(); ++it){
+            record_it = record.find(*it);
+            if( record_it == record.end() ){ //not found
+                record.insert(std::pair<int,int>(*it,1));
+                continue;
+            }
+
+            //found
+            record_it->second++;
+        }
+
+        for(record_it=record.begin();record_it!=record.end();++record_it){
+            if(record_it->second == 1) return record_it->first;
+        }
+        
+        return 0;
+    }
+};
+```
 
 ```
 //BIt vector 
