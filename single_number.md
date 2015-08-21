@@ -76,6 +76,10 @@ public:
     }
 };
 ```
+//above solution wrong: 
+//[1 2 2 2]
+//ret will be 2
+
 
 ```
 //BIt vector 
