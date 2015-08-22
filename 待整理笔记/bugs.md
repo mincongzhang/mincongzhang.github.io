@@ -16,3 +16,7 @@ Reason: some pointer floating around.
 an OTC msg comes in, should not update normal ticker  
 However no logic error in code  
 Reason: the exchange sends a normal msg with same fields together with this OTC msg.
+
+5.C++ STL
+looks like A.end()--; works...  
+and the end() iterator will be changed  
