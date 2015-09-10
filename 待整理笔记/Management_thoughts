@@ -39,5 +39,7 @@ Manager share some exp in utils, archetecture, tools and big picture
 -----------------------------------------------------------------------------------------
 Software engineering
 
-Decouple
+1. Decouple
 To be cohesion 
+
+2. Should be rewarded: Spot and fix a bug in a very early stage/write elegent code
