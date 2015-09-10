@@ -43,3 +43,10 @@ Software engineering
 To be cohesion 
 
 2. Should be rewarded: Spot and fix a bug in a very early stage/write elegent code
+
+3. TDD: Test driven development   
+(1)Write unit tests, make sure all fail initially (other wise irrelevant factors influence the function/tests)  
+(2)Finish functionalities  
+(3)Try to pass all the tests  
+(4)Refine/Refactor, Try to pass all again  
+Exp: If no enough unit tests for some infrastructure code, difficult to refine it. coz you don't know whether that will cause some issues (bugs) or not.
