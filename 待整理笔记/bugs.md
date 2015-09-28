@@ -28,4 +28,4 @@ Improvement: should alert if that field doesn't exist
 
 7. Debuging (dev) always correct  
 QAing always wrong  
-Reason: only worksin_tool_mode  
+Reason: only works in_tool_mode  
