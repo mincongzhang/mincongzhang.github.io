@@ -17,6 +17,15 @@ an OTC msg comes in, should not update normal ticker
 However no logic error in code  
 Reason: the exchange sends a normal msg with same fields together with this OTC msg.
 
-5.C++ STL
+5. C++ STL
 looks like A.end()--; works...  
 and the end() iterator will be changed  
+
+6. VWAP always wrong  
+Code no error
+Reason: doesn't have that field in record_layout, always got cached value=0  
+Improvement: should alert if that field doesn't exist  
+
+7. Debuging (dev) always correct  
+QAing always wrong  
+Reason: only worksin_tool_mode  
