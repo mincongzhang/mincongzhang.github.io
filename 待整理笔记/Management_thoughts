@@ -53,3 +53,9 @@ To be cohesion
 (3)Try to pass all the tests  
 (4)Refine/Refactor, Try to pass all again  
 Exp: If no enough unit tests for some infrastructure code, difficult to refine it. coz you don't know whether that will cause some issues (bugs) or not.
+
+TODO
+部门间管理
+类似部门间的交流，信息，工具同步？
+CIE部门的page没有crashbook，marketdata部门有，没交流分享
+
