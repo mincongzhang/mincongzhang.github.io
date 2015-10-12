@@ -8,6 +8,7 @@ tags: ["C++","算法"]
 
 ### Number of Islands
 //http://www.lintcode.com/en/problem/number-of-islands/
+
 ```
 //Solution: BFS/DFS
 
@@ -64,6 +65,7 @@ public:
 
 ### Number of Islands II
 http://www.lintcode.com/en/problem/number-of-islands-ii/#
+
 ```
 //Solution: BFS/DFS for given points.
 //Problem: cannot print if the point is given one by one.
