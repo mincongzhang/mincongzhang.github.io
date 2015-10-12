@@ -7,9 +7,11 @@ tags: ["C++","算法"]
 ---
 
 ### Number of Islands
-http://www.lintcode.com/en/problem/number-of-islands/
 Solution: BFS/DFS
+
 ```
+//http://www.lintcode.com/en/problem/number-of-islands/
+
 typedef unsigned int uint;
 
 class Solution {
