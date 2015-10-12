@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Play with Lintcode
+title: Lintcode练习(Play with Lintcode)
 category: 算法
 description: Lintcode
 tags: ["C++","算法"]
