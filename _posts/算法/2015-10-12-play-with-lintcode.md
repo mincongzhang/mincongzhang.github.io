@@ -59,5 +59,4 @@ public:
         return num_islands;
     }
 };
-
 ```
