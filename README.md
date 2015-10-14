@@ -13,4 +13,4 @@
 
 ### 说明
 
-模板来源于[yansu.org](http://yansu.org/)。
+模板来源于[yansu.org](http://yansu.org/)  [github.com/suyan/suyan.github.io](https://github.com/suyan/suyan.github.io/)。
