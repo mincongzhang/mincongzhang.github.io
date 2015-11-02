@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 高级搜索树3-红黑树 (Advanced search tree 3 - Red–black Tree)
+title: EDX - 高级搜索树3-红黑树 (Advanced search tree 3 - Red–black Tree)
 category: 算法
 description: 高级搜索树
 tags: ["C++","算法","数据结构"]

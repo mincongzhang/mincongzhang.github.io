@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 二叉搜索树(Binary search tree)
+title: EDX - 二叉搜索树(Binary search tree)
 category: 算法
 description: 二叉搜索树
 tags: ["C++","算法","数据结构"]
