@@ -15,4 +15,4 @@ interrupt也算
 
 shared memory
 
-deadlock你
+deadlock
