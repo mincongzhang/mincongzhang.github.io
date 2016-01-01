@@ -45,9 +45,11 @@ int fib(int n){
 int fib(int n){
 	int f=0; //fib(0)
 	int g=1; //fib(1)
+	int prev_f;
 	while(n-- > 0){
+		prev_f = f;
 		f=g;
-		g=g+f;
+		g=g+prev_f;
 	}
 	return g;
 }
