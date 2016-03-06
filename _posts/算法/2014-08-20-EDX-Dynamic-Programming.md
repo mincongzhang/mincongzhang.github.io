@@ -13,7 +13,7 @@ tags: ["C++","算法"]
 
 ```
 int fib(int n){
-	return (n<2)?n:(fib(n-1)_fib(n-2));
+	return (n<2)?n:(fib(n-1)+fib(n-2));
 }
 //复杂度:O(2^n)
 //空间:O(n)
