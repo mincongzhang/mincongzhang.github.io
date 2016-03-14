@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 散列(Hashing)
-category: 算法
+category: 算法基础
 description: 散列(Hashing)
 tags: ["C++","算法","数据结构"]
 ---
@@ -33,7 +33,7 @@ Hashing:call by value (找到的对象本身:value, 数值;这就是散列)
    
 (4)散列函数:hash() : key -> &entry
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Hashing_principle.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Hashing_principle.jpg" height="200"/>
 
 5.但是如何得到散列表(hash table)呢?
 (1)实例

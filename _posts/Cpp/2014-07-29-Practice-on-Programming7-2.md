@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practice on Programming笔记（第七周：文件操作）
-category: Cpp
+category: Cpp基础
 description: 文件操作
 tags: ["C++"]
 ---

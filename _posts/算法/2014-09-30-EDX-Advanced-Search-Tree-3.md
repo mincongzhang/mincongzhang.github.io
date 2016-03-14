@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 高级搜索树3-红黑树 (Advanced search tree 3 - Red–black Tree)
-category: 算法
+category: 算法基础
 description: 高级搜索树
 tags: ["C++","算法","数据结构"]
 ---
@@ -114,7 +114,7 @@ template <typename T> int RedBlack<T>::updateHeight( BinNodePosi(T) x ){
   (4)外部节点到根:途中黑节点数目相等    (黑深度)
 ```
   
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_red_problem.jpg" height="200"/>
   
 2.算法框架
 
@@ -143,7 +143,7 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
 (2)参照AVL树,做局部3+4重构
 (3)重新染色,中间染黑,左右染红
   
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem2.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_red_problem2.jpg" height="200"/>
   
 (4)双红缺陷调整前非法的原因:
    -某个三叉节点中插入红关键码,使得原黑关键码不再居中(RRB或者BRR)
@@ -152,7 +152,7 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
 (6)拓扑结构的调整O(1)
    -一蹴而就(3+4),无需进一步调整
  
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem3.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_red_problem3.jpg" height="200"/>
 
 4.第二种情况:叔父节点u是红色
 (1)提升变换(lift)
@@ -160,9 +160,9 @@ template <typename T> BinNodePosi(T) RedBlack<T>::insert(const T & e){
 (3)居中(偏右)的关键码上移并插入父节点
 (4)从红黑树的角度看,就是节点颜色改变了
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem4.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_red_problem4.jpg" height="200"/>
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_red_problem5.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_red_problem5.jpg" height="200"/>
 
 (5)父节点由于插入了红色节点,继续recursive解决
 (6)从B树的角度看,拓扑结构改变
@@ -206,7 +206,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (1)3,4不难满足,如下图的(a)(b)
 (2)解决方法:将替代者r染黑即可(等于删除了一条虚边,外部节点黑深度保持原状)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_delete_structure.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_delete_structure.jpg" height="200"/>
 
 5.双黑缺陷(double-black)
 (1)若x与r均黑,则是双黑缺陷,全树黑深度不统一,违反原则4
@@ -216,7 +216,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
    -r的兄弟: s = r==p->lc? p->rc : p->lc
 (4)于是有四种情况
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem.jpg" height="200"/>
 
 6.双黑缺陷(double-black)情况1:s(sibling)为黑色,且至少有一个红孩子t
 (1)解决方法:
@@ -224,12 +224,12 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
    -r保持黑;t和p染黑;s继承p的原色
 (2)调整后红黑树性质在全局得以恢复,删除完成
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1.jpg" height="200"/>
 
 (3)B树反观:
    -通过关键码的旋转,消除超级节点的下溢(underflow)(删除x后小于1个节点)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1-1.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem1-1.jpg" height="200"/>
 
 7.双黑缺陷(double-black)情况2-1:s(sibling)为黑色,两个孩子均为黑;p为红
 (1)s独自构成关键码,无法借出关键码,发生下溢(underflow)
@@ -240,7 +240,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 (3)红黑树角度:
    -s黑转红,p红转黑
    
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-1.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-1.jpg" height="200"/>
    
 8.双黑缺陷(double-black)情况2-2:s(sibling)为黑色,两个孩子均为黑;p为黑
 (1)s独自构成关键码,无法借出关键码,发生下溢(underflow)
@@ -251,7 +251,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
 
 *我的疑问:p以下的子树黑深度都减少了1,没变,但其他节点子树黑深度没变呀...
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-2.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem2-2.jpg" height="200"/>
    
 9.双黑缺陷(double-black)情况3:s(sibling)为红色,两个孩子均为黑
 (1)s改作为p的父节点
@@ -262,7 +262,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
    -只能是7.或者6.中的情况,根据它们在调整一轮
    -红黑树就全局恢复
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_double_black_problem3.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_double_black_problem3.jpg" height="200"/>
 
 10.总结
 (1)每一删除操作,都可在O(logn)时间内完成,其中至多做:
@@ -270,7 +270,7 @@ r = removeAt( x,_hot ); (删除了在_hot以下的节点x)
    -一次3+4重构
    -一次单旋   
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-3_RedBlackTree_conclusion.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-3_RedBlackTree_conclusion.jpg" height="200"/>
 
  
 算法导论对R-B Tree的介绍：

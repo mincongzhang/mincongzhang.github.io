@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 优先级队列(Priority queue)
-category: 算法
+category: 算法基础
 description: 优先级队列(Priority queue)
 tags: ["C++","算法","数据结构"]
 ---

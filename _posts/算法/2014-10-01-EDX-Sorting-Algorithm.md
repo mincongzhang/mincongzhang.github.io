@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 排序算法总结
-category: 算法
+category: 算法基础
 description: 图
 tags: ["C++","算法"]
 ---

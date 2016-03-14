@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 向量(vector)
-category: 算法
+category: 算法基础
 description: vector
 tags: ["C++","算法","数据结构"]
 ---

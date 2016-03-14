@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 高级搜索树-伸展树(Advanced search tree - Splay Tree)
-category: 算法
+category: 算法基础
 description: 高级搜索树
 tags: ["C++","算法","数据结构"]
 ---
@@ -52,8 +52,8 @@ tags: ["C++","算法","数据结构"]
 5.子孙同侧:越级,祖父节点先旋转,再旋转父节点,孙节点就能上升2层(如图)(一般情况,父节点旋转,祖父节点旋转,孙节点上升两层)
 6.奥妙之处:旋转调整结束后,整棵树的拓扑都变了,树高降低,极端情况(单链)能缩减为一半(如图)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_zigzag.jpg" alt="LCS" title="LCS" height="200"/>
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splaytree_result.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree_splaytree_zigzag.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree_splaytree_result.jpg" alt="LCS" title="LCS" height="200"/>
 
 7.总结:
 (1)子孙异侧,v调整到(子)树根;
@@ -153,7 +153,7 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 (3)查找(失败)之后,_hot即是根节点
 (4)拆开_hot的一个子树,接上v (如图)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splay_tree_insert.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree_splay_tree_insert.jpg" alt="LCS" title="LCS" height="200"/>
 
 5.删除算法
 (1)直观方法:调用BST标准的删除算法,再将_hot伸展至根
@@ -161,7 +161,7 @@ template <typename T> BinNodePosi(T) & Splay<T>::search( const T & e ){
 (3)即可,在查找后的树根附近完成目标节点的删除
 (4)之后的连接,一个可行的方法,从右子树中提取最小的节点(参考中序遍历算法迭代版)作为root,连结左子树和剩下的右子树(如图)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree_splay_tree_delete.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree_splay_tree_delete.jpg" alt="LCS" title="LCS" height="200"/>
 
 ### 综合评价
 优点:

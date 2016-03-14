@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 动态规划(Dynamic Programming)
-category: 算法
+category: 算法基础
 description: 动态规划
 tags: ["C++","算法"]
 ---
@@ -87,6 +87,6 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 (2)分而治之,取左上+1  
 (3)减而治之,看上,左,取最大的复制  
 
-<!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/LCS.jpg) -->
+<!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/LCS.jpg) -->
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Dynamic-Programming_LCS.jpg" alt="LCS" title="LCS" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Dynamic-Programming_LCS.jpg" alt="LCS" title="LCS" height="200"/>

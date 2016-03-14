@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 二叉树(binary tree)
-category: 算法
+category: 算法基础
 description: 二叉树
 tags: ["C++","算法","数据结构"]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: EDX - 高级搜索树2-B树 (Advanced search tree 2 - B-Tree)
-category: 算法
+category: 算法基础
 description: 高级搜索树
 tags: ["C++","算法","数据结构"]
 ---
@@ -51,7 +51,7 @@ tags: ["C++","算法","数据结构"]
 (1)平衡的多路(multi-way)搜索树
 (2)若干个二路节点经适当合并可得*超级节点* (如图2代合并得4路分支)
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree.jpg"  height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-2_multiway_search_tree.jpg"  height="200"/>
 
 3.多路(multi-way)有什么用呢
 (1)*多级*储存系统中使用B树,可针对外部查找,大大较少IO次数
@@ -123,7 +123,7 @@ template <typename T> struct BTNode { //B树节点
 }
 ```
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_BTNode.jpg"  height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-2_BTNode.jpg"  height="200"/>
 
 ```
 /* BTree */
@@ -221,7 +221,7 @@ bool BTree<T>::insert( const T & e ){
 (1)分裂方法如下图:
 节点的[下界,上界] = [ceil(m/2),m]
 
-<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_split_when_insert.jpg" height="200"/>
+<img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-2_multiway_search_tree_split_when_insert.jpg" height="200"/>
 
 (2)问题:父节点中又插入了新的节点(有可能上溢)
    解决方法:向上传播,继续分裂,直到根节点
@@ -279,7 +279,7 @@ bool BTree<T>::remove( const T & e ){
    (保证搜索树的性质,左子树<=父节点<=右子树)
    如图:
    
-   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_delete_and_rotate.jpg" height="200"/>
+   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-2_multiway_search_tree_delete_and_rotate.jpg" height="200"/>
 
 (3)解决方法2:合并
    左/右兄弟(sibling)不存在,或所含关键码均不足ceil(m/2)个
@@ -287,7 +287,7 @@ bool BTree<T>::remove( const T & e ){
    不能直接合并两个子节点,因为这样就违背了搜索树顺序排列的原则
    父节点关键码合并之后,相当于删除了一个关键码,需要往上一层解决删除问题
    
-   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法/Advanced-Search-Tree-2_multiway_search_tree_delete_and_merge.jpg" height="200"/>
+   <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Advanced-Search-Tree-2_multiway_search_tree_delete_and_merge.jpg" height="200"/>
    
    
    

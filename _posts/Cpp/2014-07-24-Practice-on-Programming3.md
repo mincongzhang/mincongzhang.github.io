@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practice on Programming笔记（第三周：类和对象进阶）
-category: Cpp
+category: Cpp基础
 description: 类和对象进阶
 tags: ["C++"]
 ---
