@@ -63,3 +63,6 @@ dp[n][bag_available_weight]
 
 6.时间复杂度
 O(n+1)*(W+1) = O(nW), n个物品,W的可用背包重量
+
+Ref:
+http://www.csie.ntnu.edu.tw/~u91029/KnapsackProblem.html
