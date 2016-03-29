@@ -1,0 +1,4 @@
+TODO:
+Subset sum problem(dynamic programming)
+https://en.wikipedia.org/wiki/Subset_sum_problem
+http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/
