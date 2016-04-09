@@ -81,9 +81,8 @@ O(n+1)*(W+1) = O(nW), n个物品,W的可用背包重量
 
 
 
-https://en.wikipedia.org/wiki/Subset_sum_problem
-http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/
-
 Ref:
-http://www.csie.ntnu.edu.tw/~u91029/KnapsackProblem.html
+1.http://www.csie.ntnu.edu.tw/~u91029/KnapsackProblem.html
+2.https://en.wikipedia.org/wiki/Subset_sum_problem
+3.http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/
 
