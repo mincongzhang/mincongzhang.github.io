@@ -64,8 +64,22 @@ dp[n][bag_available_weight]
 6.时间复杂度
 O(n+1)*(W+1) = O(nW), n个物品,W的可用背包重量
 
-TODO:
-Subset sum problem(dynamic programming)
+### 背包问题：递归（topdown）和遍历表格（bottomup）方式的对比
+1.递归比较容易理解，但是假如递归深度很深，可能出现栈溢出的问题。
+2.但是通过实践，其实递归可以减少很多计算量，不需要算出整个表格，即可求解。
+
+3.遍历表格方法复杂度固定，就是O(n×(sum+1))。
+4.虽然计算量可能大一些，但是通过优化，可节省内存：不需要n×(sum+1)的表格，提供sum+1的array即可（重复利用覆盖已有的值）。
+
+5.总之，递归减少计算量，遍历减少空间使用。
+
+### 相关问题：子集和问题(Subset sum problem)
+1.子集和问题也算是一类背包问题：给出一个数，在一个集合中找到子集，使其相加之和能等于那个数。
+2.考察集合内每个数，我们有选取/不选取，两种情况。所以brute force方法就是O(2^n)。
+2.用背包问题的思考方式，我们可以建立一个n×(sum+1)的表格。用动态规划解决。
+
+
+
 https://en.wikipedia.org/wiki/Subset_sum_problem
 http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/
 
