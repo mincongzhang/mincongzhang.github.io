@@ -8,10 +8,46 @@ tags: ["C++","算法"]
 
 整理edX上Data Structures and Algorithms里所有排序算法.
 
-### 冒泡排序
+### 快速排序(quick sort)
+1.分而治之
+(1)将序列分为两个子序列: S = S_l + S_r
+(2)规模缩小
+(3)彼此独立 max(S_l) <= min(S_r)
+(4)在子序列分别__递归__排序后,原序列自然有序:sorted(S) = sorted(S_l) +　sorted(S_r)
+(5)平凡解:只剩单个元素时,本身就是解
+(6)mergesort的计算量和难点在于__合__,quicksort在于__分__
+
+2.轴点
+(1)pivot:左侧比它小,右侧比它大
+(2)以轴点为界,原序列的划分[low,high) = [low,mid) + [mid] + (mid,high)
+(3)于是现在问题就成了快速找轴点,之后就可以递归求解
+
+```
+template <typename T>
+void vector<T>::quickSort(Rank lo,Rank hi){
+	if(hi-lo < 2)  return;
+	
+	Rank mi = partition(lo,hi-1);
+
+	quickSort(lo,mi);
+	quickSort(mi+1,hi);
+}
+```
+
+(4)坏消息:在原始序列中,轴点未必存在
+(5)必要条件:轴点必定已然就位
+(6)特别地:在有序序列中,所有元素皆为轴点
+(7)快速排序:就是将所有元素逐个转换为轴点的过程
+(8)好消息:通过适当交换,可使任一元素转换为轴点
+
+3.构造轴点
+(1)经典步骤,选取第一个元素作为m
+(2)然后lo在左,hi在右,慢慢对比往中间移动
+
+### 冒泡排序(bubble sort)
 1.
 
-### 归并排序
+### 归并排序(merge sort)
 1.
 
 
