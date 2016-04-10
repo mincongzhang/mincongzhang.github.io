@@ -34,3 +34,21 @@ e.g.
 3.如何写出时间空间都高效的频繁数搜索算法?
 
 ### 减而治之
+
+```
+template<typename T> T majorElemCandidate( vector<T> A ){
+	T maj;
+	int count(0);
+	
+	for(i(0);i<A.size();++i){
+		if(count == 0){
+			maj = A[i];
+			count++;
+		} else {
+			maj == A[i]? count++ : count--;
+		}
+	}
+	
+	return maj; //假如众数存在,则为maj(但也有可能不存在)
+}
+```
