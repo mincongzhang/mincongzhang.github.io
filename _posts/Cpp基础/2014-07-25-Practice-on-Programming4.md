@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Practice on Programming笔记（第四周：运算符重载）
+title: Practice on Programming笔记（第四周：运算符重载, 以及浅复制和深赋值）
 category: Cpp基础
 description: 运算符重载
 tags: ["C++"]
@@ -66,7 +66,7 @@ String & operator=(const String &s){
 }  
 ```
 
-(3)s = s;//这时候会有问题
+(3)s = s;//这时候会有问题, 自己赋值给自己, 但是把自己先给删了?
 添加
 
 ```
