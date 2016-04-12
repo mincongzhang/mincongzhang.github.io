@@ -94,6 +94,7 @@ Copy constructor called
 
 3.为什么要自己写复制构造函数？
 面向对象有时候必须要自己写复制构造函数，否则会出错
+e.g. reference counting?
 
 ### 类型转换构造函数
 1.
