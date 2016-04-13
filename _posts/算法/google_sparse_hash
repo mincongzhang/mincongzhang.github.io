@@ -6,3 +6,6 @@ Google sparse hash map has conflict with boost tuple
 /home/dev/build/third_party/64-rhel5/boost_1_47_0/include/boost/tr1/tuple.hpp:63: error:  'tuple' is already declared in this scope
 [ 3] /home/dev/build/third_party/64-rhel5/boost_1_47_0/include/boost/tr1/tuple.hpp:72: error:  'tuple_size' is already declared in this scope
 [ 3] /home/dev/build/third_party/64-rhel5/boost_1_47_0/include/boost/tr1/tuple.hpp:73: error:  'tuple_element' is already declared in this scope
+
+
+https://groups.google.com/forum/#!topic/google-sparsehash/Bgdc55_azRw
