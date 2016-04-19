@@ -58,6 +58,7 @@ int fib(int n){
 ```
 
 ### 最长公共子序列(Longest common subsequence problem,LCS)
+
 1. 子序列(subsequence):由序列中若干字符,按原相对次序构成
 e.g.
 tsinghua子序列sina, computer子序列cute
@@ -67,7 +68,14 @@ e.g.
 edudational 和 advantage: data/dana (可能有多个)
 didactical 和 advantage: data (可能有歧义,第一个词did...)
 
-3. 递归(recursion)解法
+3.分析和理解
+(1)暂时不管计算效率,先考虑一个可行的LCS算法,用递归
+(2)给出两个序列A,B, 从末端看, 有三种情况
+-某个序列是空, return
+-俩序列末端相同,return LCS(A(end-1),B(end-1))+A[end]
+-俩序列末端不同,return max(  LCS(A(end-1),B(end)),LCS(A(end),B(end-1))  )
+
+4. 递归(recursion)解法
 对于序列A[0,n]和B[0,m]LCS(A,B),三种情况
 (1)n=-1或者m=-1, 
 取作空序列("")											//可作为递归基(base)
@@ -82,7 +90,7 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 子问题总共不过O(n+m)种
 所以采用dynamic programming策略, 只需O(n*m)时间
 
-4. Dynamic Programming解法  
+5. Dynamic Programming解法  
 (1)制表  
 (2)分而治之,取左上+1  
 (3)减而治之,看上,左,取最大的复制  
@@ -90,3 +98,5 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 <!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/LCS.jpg) -->
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Dynamic-Programming_LCS.jpg" alt="LCS" title="LCS" height="200"/>
+
+6.同理, 额外思考: 爬楼梯问题
