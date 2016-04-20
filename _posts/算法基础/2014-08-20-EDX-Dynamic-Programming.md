@@ -90,13 +90,47 @@ didactical 和 advantage: data (可能有歧义,第一个词did...)
 子问题总共不过O(n+m)种
 所以采用dynamic programming策略, 只需O(n*m)时间
 
+```
+#include <iostream>
+#include <string>
+
+#define log(msg) do{std::cout<<msg<<std::endl;}while(0)
+std::string LCS(std::string & a, int a_end, std::string & b, int b_end){
+  if(a_end<0 || b_end<0) return "";
+
+  if(a[a_end] == b[b_end]){
+    return LCS(a,a_end-1,b,b_end-1) + a[a_end];
+  } else {
+    std::string a_lcs = LCS(a,a_end,b,b_end-1);
+    std::string b_lcs = LCS(a,a_end-1,b,b_end);
+    return (a_lcs.size()>b_lcs.size())? a_lcs : b_lcs;
+  }
+}
+
+int main(){
+  log("LCS:");
+
+  //xyz
+  std::string a="abxcaybzcabc";
+  std::string b="dxefydefzdef";
+  std::string lcs = LCS(a,a.size()-1,b,b.size()-1);
+  log(lcs);
+}
+```
+
+4. 递归(recursion)的缺点
+(1)重复计算: 在计算到下一个相同位置(a[a_end] == b[b_end])的时候, 最坏可能经历n^2次递归
+
 5. Dynamic Programming解法  
 (1)制表  
-(2)分而治之,取左上+1  
-(3)减而治之,看上,左,取最大的复制  
-
-<!-- ![Demo](https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/LCS.jpg) -->
+(2)分而治之,取左上+1           (就是a[end] == b[end]的情况,序列数+1)   
+(3)减而治之,看上,左,取最大的复制 (就是看LCS(a-1,b),LCS(a,b-1)取最长的情况) 
 
 <img src="https://github.com/mincongzhang/mincongzhang.github.io/raw/master/_posts/算法基础/Dynamic-Programming_LCS.jpg" alt="LCS" title="LCS" height="200"/>
+
+```
+//Dynamic programming
+
+```
 
 6.同理, 额外思考: 爬楼梯问题
