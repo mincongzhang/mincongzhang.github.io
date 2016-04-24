@@ -234,3 +234,8 @@ public:
     }
 };
 ```
+
+```
+//In Place Solution
+http://bangbingsyb.blogspot.co.uk/2014/11/leetcode-first-missing-positive.html
+```
