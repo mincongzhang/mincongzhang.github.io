@@ -193,3 +193,44 @@ public:
     }
 };
 ```
+
+
+### First Missing Positive
+Given an unsorted integer array, find the first missing positive integer.
+http://www.lintcode.com/en/problem/first-missing-positive/
+
+```
+class Solution {
+public:
+    /**    
+     * @param A: a vector of integers
+     * @return: an integer
+     */
+    int firstMissingPositive(vector<int> A) {
+        if(A.empty()) return 1;
+        
+        // NOTE: 无序数组的题目如果要O(n)解法往往要用到hash table
+        int A_max(0);
+        for(int it(0); it < A.size(); ++it){
+            if(A[it] > A_max){
+                A_max = A[it];
+            }
+        }
+        
+        std::vector<int> positive_A(A_max+1,0);//including 0
+        for(int it(0); it < A.size(); ++it){
+            if(A[it] > 0){
+                positive_A[A[it]] = A[it];
+            }
+        }
+        
+        for(int it(1); it < positive_A.size(); ++it){
+            if(positive_A[it] != it){
+                return it;
+            }
+        }
+    
+        return A_max + 1;    
+    }
+};
+```
