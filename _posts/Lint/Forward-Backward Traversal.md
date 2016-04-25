@@ -1,6 +1,5 @@
 http://www.lintcode.com/en/tag/forward-backward-traversal/
 
-
 ### Product of Array Exclude Itself
 Given an integers array A. Define B[i] = A[0] * ... * A[i-1] * A[i+1] * ... * A[n-1], calculate B WITHOUT divide operation.
 
