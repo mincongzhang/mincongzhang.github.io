@@ -242,6 +242,44 @@ http://bangbingsyb.blogspot.co.uk/2014/11/leetcode-first-missing-positive.html
 ```
 
 
+### Partition Array
+Given an array nums of integers and an int k, partition the array (i.e move the elements in "nums") such that:
+All elements < k are moved to the left
+All elements >= k are moved to the right
+Return the partitioning index, i.e the first index i nums[i] >= k.
+
+```
+#include <algorithm>
+
+class Solution {
+public:
+  int partitionArray(vector<int> &nums, int k) {
+    if(nums.empty()) return 0;
+
+    int begin(0),end(nums.size()-1);
+    while(begin != end){
+      if(nums[begin] < k){
+        begin++;
+        continue;
+      }
+
+      if(nums[end] >= k){
+        end--;
+        continue;
+      }
+
+      std::swap(nums[begin],nums[end]);
+    }
+
+    if(begin == nums.size()-1){
+      return nums.size();
+    }
+
+    return begin;
+  }
+};
+```
+
 ### 2 Sum
 Given an array of integers, find two numbers such that they add up to a specific target number.
 http://www.lintcode.com/en/problem/two-sum/
