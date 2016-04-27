@@ -482,3 +482,56 @@ public:
     }
 };
 ```
+
+
+### 3Sum Closest
+Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers.
+http://www.lintcode.com/en/problem/3sum-closest/
+```
+#include <algorithm>
+#include <limits.h>
+
+class Solution {
+private:
+  int m_closest_sum;
+  int m_target;
+
+  void findCloest(const vector<int> & nums, int begin, int end){
+    int first = nums[begin];
+    begin++;
+
+    int abs_diff = INT_MAX;//TODO: max int?
+    begin++;
+    while(begin < end){
+      int cur_abs_diff = std::abs(m_target - (first + nums[begin] + nums[end]));
+      if(cur_abs_diff >= abs_diff){
+        break;
+      }
+    }
+
+  }
+
+public:
+  /**
+   * @param numbers: Give an array numbers of n integer
+   * @param target: An integer
+   * @return: return the sum of the three integers, the sum closest target.
+   */
+  int threeSumClosest(vector<int> nums, int target) {
+    m_closest_sum = 0;
+    if(nums.empty()) return m_closest_sum;
+
+    m_target = target;
+    std::sort(nums.begin(),nums.end());
+
+    for(int begin(0),end(nums.size()-1); begin<nums.size(); ++begin){
+      findCloest(nums,begin,end);
+    }
+
+
+    //if abs(diff) decrease, keep going
+    //else break
+
+  }
+};
+```
