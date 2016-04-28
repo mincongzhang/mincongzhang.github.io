@@ -6,7 +6,8 @@ description: Perl学习笔记
 tags: ["perl"]
 ---
 
-
+### Why Perl
+http://perl-begin.org/learn/why-perl/
 
 ### @ARGV
 http://zhidao.baidu.com/question/129677073.html
