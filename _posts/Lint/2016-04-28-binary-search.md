@@ -45,3 +45,9 @@ public:
 };
 
 ```
+
+###
+sqrt:
+http://bangbingsyb.blogspot.co.uk/2014/11/leetcode-sqrtx.html
+https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+http://www.matrix67.com/blog/archives/361
