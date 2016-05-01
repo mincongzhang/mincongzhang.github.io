@@ -51,6 +51,8 @@ Implement int sqrt(int x).
 http://www.lintcode.com/en/problem/sqrtx/
 
 ```
+//Newton's method
+
 #include <iostream>
 class Solution {
 public:
@@ -73,6 +75,41 @@ public:
         }
         
         return int(s);
+    }
+};
+```
+
+```
+//binary search 
+#include <iostream>
+class Solution {
+public:
+    /**
+     * @param x: An integer
+     * @return: The sqrt of x
+     */
+    int sqrt(int x) {
+        if(x == 1) return x;
+
+        long begin(0),end(x);
+        while(begin+1 < end){
+            long mid = (begin + end)/2;
+            long square = mid*mid;
+            
+            if(square > x){
+                end = mid;
+                continue;
+            }
+            
+            if(square < x){
+                begin = mid;
+                continue;
+            }
+            
+            return mid;
+        }
+    
+        return begin;
     }
 };
 ```
