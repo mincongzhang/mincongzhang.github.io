@@ -146,74 +146,6 @@ public:
 ```
 
 
-### Sqrt
-Implement int sqrt(int x).
-http://www.lintcode.com/en/problem/sqrtx/
-
-```
-//Newton's method
-
-#include <iostream>
-class Solution {
-public:
-    /**
-     * @param x: An integer
-     * @return: The sqrt of x
-     */
-    int sqrt(int x) {
-        if(x == 0) return 0;
-        
-        //sqrt(x)
-        //https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
-        
-        double s = double(x)/2.0;
-        while(true){
-            double s_n = 0.5*(s + x/s);
-            if(int(s_n) == int(s)){ break; }
-            
-            s = s_n;
-        }
-        
-        return int(s);
-    }
-};
-```
-
-```
-//binary search 
-#include <iostream>
-class Solution {
-public:
-    /**
-     * @param x: An integer
-     * @return: The sqrt of x
-     */
-    int sqrt(int x) {
-        if(x == 1) return x;
-
-        long begin(0),end(x);
-        while(begin+1 < end){
-            long mid = (begin + end)/2;
-            long square = mid*mid;
-            
-            if(square > x){
-                end = mid;
-                continue;
-            }
-            
-            if(square < x){
-                begin = mid;
-                continue;
-            }
-            
-            return mid;
-        }
-    
-        return begin;
-    }
-};
-```
-
 ### Search a 2D Matrix
 Write an efficient algorithm that searches for a value in an m x n matrix.
 This matrix has the following properties:
@@ -289,6 +221,119 @@ public:
         }
 
         return searchRow(matrix[col]);
+    }
+};
+```
+
+
+### First Bad Version
+he code base version is an integer start from 1 to n. One day, someone committed a bad version in the code case, so it caused this version and the following versions are all failed in the unit tests. Find the first bad version.
+
+You can call isBadVersion to help you determine which version is the first bad one. The details interface can be found in the code's annotation part.
+http://www.lintcode.com/en/problem/first-bad-version/
+
+```
+/**
+ * class SVNRepo {
+ *     public:
+ *     static bool isBadVersion(int k);
+ * }
+ * you can use SVNRepo::isBadVersion(k) to judge whether 
+ * the kth code version is bad or not.
+*/
+class Solution {
+public:
+    /**
+     * @param n: An integers.
+     * @return: An integer which is the first bad version.
+     */
+    int findFirstBadVersion(int n) {
+        if(n == 0) return 0;
+        
+        int begin(0),end(n);
+        //find first "true"
+        while(begin+1 < end){
+            int mid = (begin+end)/2;
+            
+            if(SVNRepo::isBadVersion(mid)){
+                end = mid;
+                continue;
+            }
+            
+            //if mid is not bad
+            begin = mid;
+        }
+        
+        return end;
+    }
+};
+```
+
+
+### Sqrt
+Implement int sqrt(int x).
+http://www.lintcode.com/en/problem/sqrtx/
+
+```
+//Newton's method
+
+#include <iostream>
+class Solution {
+public:
+    /**
+     * @param x: An integer
+     * @return: The sqrt of x
+     */
+    int sqrt(int x) {
+        if(x == 0) return 0;
+        
+        //sqrt(x)
+        //https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+        
+        double s = double(x)/2.0;
+        while(true){
+            double s_n = 0.5*(s + x/s);
+            if(int(s_n) == int(s)){ break; }
+            
+            s = s_n;
+        }
+        
+        return int(s);
+    }
+};
+```
+
+```
+//binary search 
+#include <iostream>
+class Solution {
+public:
+    /**
+     * @param x: An integer
+     * @return: The sqrt of x
+     */
+    int sqrt(int x) {
+        if(x == 1) return x;
+
+        long begin(0),end(x);
+        while(begin+1 < end){
+            long mid = (begin + end)/2;
+            long square = mid*mid;
+            
+            if(square > x){
+                end = mid;
+                continue;
+            }
+            
+            if(square < x){
+                begin = mid;
+                continue;
+            }
+            
+            return mid;
+        }
+    
+        return begin;
     }
 };
 ```
