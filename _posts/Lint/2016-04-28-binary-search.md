@@ -189,17 +189,14 @@ private:
         while(begin <= end){
             int mid = (begin+end)/2;
             int mid_val = row[mid];
+            
+            if(mid_val == m_target) return true;
+            
             if(mid_val > m_target){
                 end = mid-1;//NOTE:beware
-                continue;
-            }
-        
-            if(mid_val < m_target){
+            } else {
                 begin = mid+1;//NOTE: this happens again...NOTE: because int mid = floor((begin+end)/2)
-                continue;
             }
-            
-            return true;
         }
         
         return false;
@@ -223,6 +220,7 @@ public:
         return searchRow(matrix[col]);
     }
 };
+
 ```
 
 ### Find Minimum in Rotated Sorted Array
@@ -386,7 +384,6 @@ public:
 ```
 
 ```
-//binary search 
 #include <iostream>
 class Solution {
 public:
@@ -402,17 +399,14 @@ public:
             long mid = (begin + end)/2;
             long square = mid*mid;
             
+            if(square == x) return mid;
             if(square > x){
                 end = mid;
                 continue;
-            }
-            
-            if(square < x){
+            } else {
                 begin = mid;
                 continue;
             }
-            
-            return mid;
         }
     
         return begin;
