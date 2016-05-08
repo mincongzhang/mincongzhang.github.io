@@ -460,3 +460,11 @@ public:
     }
 };
 ```
+
+###  Fast Power
+Calculate the a^n % b where a, b and n are all 32bit integers.
+http://www.lintcode.com/en/problem/fast-power/
+
+```
+http://www.lintcode.com/en/problem/fast-power/
+```
