@@ -364,7 +364,7 @@ public:
 ```
 
 ### Rotate List
-Given a list, rotate the list to the right by k places, where k is non-negative.
+Given a list, rotate the list to the right by k places, where k is non-negative.  
 http://www.lintcode.com/en/problem/rotate-list/
 
 ```
