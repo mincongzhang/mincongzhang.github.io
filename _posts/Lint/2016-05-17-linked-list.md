@@ -185,6 +185,10 @@ public:
      * @return: a ListNode 
      */
     ListNode *partition(ListNode *head, int x) {
+        //Idea:
+        //create 2 lists with less/greater, appending
+        //In the end conect 2 lists
+        
         ListNode * less_x = new ListNode(INT_MIN);
         ListNode * greater_equal_x = new ListNode(INT_MIN);
         
