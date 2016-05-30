@@ -6,6 +6,10 @@ description: Lintcode
 tags: ["C++","算法"]
 ---
 
+NOTE: what I learnt in lists:  
+Either in partition or merging, don't need to do the in place swap shit. Just create a new list node and append to the end of it.
+
+
 ### Remove Nth Node From End of List
 Given a linked list, remove the nth node from the end of list and return its head.
 http://www.lintcode.com/en/problem/remove-nth-node-from-end-of-list/
@@ -98,6 +102,153 @@ public:
     }
 };
 ```
+
+### Reverse Linked List
+Reverse a linked list.
+
+```
+/**
+ * Definition of ListNode
+ * 
+ * class ListNode {
+ * public:
+ *     int val;
+ *     ListNode *next;
+ * 
+ *     ListNode(int val) {
+ *         this->val = val;
+ *         this->next = NULL;
+ *     }
+ * }
+ */
+class Solution {
+  private:
+  void insert(ListNode * cur_node, const int & val){
+    ListNode * insert_node = new ListNode(val);
+    insert_node->next = cur_node->next;
+    cur_node->next = insert_node;
+  }
+  
+  public:
+  ListNode *reverse(ListNode *head){
+    if(head == NULL) return NULL;
+  
+    ListNode * new_head = new ListNode(INT_MIN);
+    while(head != NULL){
+      insert(new_head,head->val);
+      head = head->next;
+    }
+    return new_head->next;
+  }
+};
+
+```
+
+###  Linked List Cycle
+Given a linked list, determine if it has a cycle in it.
+http://www.lintcode.com/en/problem/linked-list-cycle/
+
+```
+//Accepted solution
+class Solution {
+public:
+    /**
+     * @param head: The first node of linked list.
+     * @return: True if it has a cycle, or false
+     */
+    bool hasCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next, fast = fast->next->next;
+            if (slow == fast) {  // There is a cycle.
+                return true;
+            }
+        }
+        return false;  // No cycle.
+    }
+};
+```
+
+```
+//My Solution
+class Solution {
+public:
+    /**
+     * @param head: The first node of linked list.
+     * @return: True if it has a cycle, or false
+     */
+    bool hasCycle(ListNode *head) {
+        if(head == NULL) return false;
+        
+        ListNode * list_duplicate = head;
+        
+        head = head->next;
+        while(head){
+            if(head->val == list_duplicate->val){
+                if(head == list_duplicate){
+                    return true;
+                }
+                
+                list_duplicate = head;
+            }
+            
+            head = head->next;
+        }
+        
+        return false;
+    }
+};
+```
+
+### Rotate List
+Given a list, rotate the list to the right by k places, where k is non-negative.  
+http://www.lintcode.com/en/problem/rotate-list/
+
+```
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+  /**
+   * @param head: the list
+   * @param k: rotate to the right k places
+   * @return: the list after rotation
+   */
+  ListNode *rotateRight(ListNode *head, int k) {
+    if(k == 0) return head;
+    if(head == NULL || head->next == NULL) return head;
+
+    //NOTE: size should start from 1
+    int size = 1;
+    ListNode * list_it = head;
+    while(list_it->next != NULL){
+      list_it = list_it->next;
+      size++;
+    }
+    list_it->next = head;
+
+    //NOTE: should be k%size rather than size%k
+    int tail_pos = size - k % size;
+    ListNode * rotate_tail = head;
+    while(--tail_pos > 0){
+      rotate_tail = rotate_tail->next;
+    }
+
+    ListNode * rotate_head = rotate_tail->next;
+    rotate_tail->next = NULL;
+
+    return rotate_head;
+  }
+};
+```
+
 
 ###  Merge Two Sorted Lists
 Merge two sorted (ascending) linked lists and return it as a new sorted list. The new sorted list should be made by splicing together the nodes of the two lists and sorted in ascending order.
@@ -266,151 +417,6 @@ public:
 };
 ```
 
-### Reverse Linked List
-Reverse a linked list.
-
-```
-/**
- * Definition of ListNode
- * 
- * class ListNode {
- * public:
- *     int val;
- *     ListNode *next;
- * 
- *     ListNode(int val) {
- *         this->val = val;
- *         this->next = NULL;
- *     }
- * }
- */
-class Solution {
-  private:
-  void insert(ListNode * cur_node, const int & val){
-    ListNode * insert_node = new ListNode(val);
-    insert_node->next = cur_node->next;
-    cur_node->next = insert_node;
-  }
-  
-  public:
-  ListNode *reverse(ListNode *head){
-    if(head == NULL) return NULL;
-  
-    ListNode * new_head = new ListNode(INT_MIN);
-    while(head != NULL){
-      insert(new_head,head->val);
-      head = head->next;
-    }
-    return new_head->next;
-  }
-};
-
-```
-
-###  Linked List Cycle
-Given a linked list, determine if it has a cycle in it.
-http://www.lintcode.com/en/problem/linked-list-cycle/
-
-```
-//Accepted solution
-class Solution {
-public:
-    /**
-     * @param head: The first node of linked list.
-     * @return: True if it has a cycle, or false
-     */
-    bool hasCycle(ListNode *head) {
-        ListNode *slow = head, *fast = head;
-
-        while (fast && fast->next) {
-            slow = slow->next, fast = fast->next->next;
-            if (slow == fast) {  // There is a cycle.
-                return true;
-            }
-        }
-        return false;  // No cycle.
-    }
-};
-```
-
-```
-//My Solution
-class Solution {
-public:
-    /**
-     * @param head: The first node of linked list.
-     * @return: True if it has a cycle, or false
-     */
-    bool hasCycle(ListNode *head) {
-        if(head == NULL) return false;
-        
-        ListNode * list_duplicate = head;
-        
-        head = head->next;
-        while(head){
-            if(head->val == list_duplicate->val){
-                if(head == list_duplicate){
-                    return true;
-                }
-                
-                list_duplicate = head;
-            }
-            
-            head = head->next;
-        }
-        
-        return false;
-    }
-};
-```
-
-### Rotate List
-Given a list, rotate the list to the right by k places, where k is non-negative.  
-http://www.lintcode.com/en/problem/rotate-list/
-
-```
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-  /**
-   * @param head: the list
-   * @param k: rotate to the right k places
-   * @return: the list after rotation
-   */
-  ListNode *rotateRight(ListNode *head, int k) {
-    if(k == 0) return head;
-    if(head == NULL || head->next == NULL) return head;
-
-    //NOTE: size should start from 1
-    int size = 1;
-    ListNode * list_it = head;
-    while(list_it->next != NULL){
-      list_it = list_it->next;
-      size++;
-    }
-    list_it->next = head;
-
-    //NOTE: should be k%size rather than size%k
-    int tail_pos = size - k % size;
-    ListNode * rotate_tail = head;
-    while(--tail_pos > 0){
-      rotate_tail = rotate_tail->next;
-    }
-
-    ListNode * rotate_head = rotate_tail->next;
-    rotate_tail->next = NULL;
-
-    return rotate_head;
-  }
-};
-```
 
 #  Sort List
 Sort a linked list in O(n log n) time using constant space complexity
