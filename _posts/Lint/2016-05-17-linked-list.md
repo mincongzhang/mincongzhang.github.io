@@ -510,3 +510,67 @@ public:
 };
 ```
 
+```
+/**
+ * Definition of ListNode
+ * class ListNode {
+ * public:
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int val) {
+ *         this->val = val;
+ *         this->next = NULL;
+ *     }
+ * }
+ */
+class Solution {
+private:
+  ListNode * merge(ListNode * head1, ListNode * head2){
+    ListNode pre_head(INT_MIN);
+    pre_head.next = NULL;
+    ListNode * pre_head_iter = &pre_head;
+
+    while(head1 && head2){
+      if(head1->val > head2->val){
+        pre_head_iter->next = head2;
+        head2 = head2->next;
+      } else {
+        pre_head_iter->next = head1;
+        head1 = head1->next;
+      }
+      pre_head_iter = pre_head_iter->next;
+    }
+
+    if(head1){
+      pre_head_iter->next = head1;
+    } else {
+      pre_head_iter->next = head2;
+    }
+
+    return pre_head.next;
+  }
+
+public:
+  /**
+   * @param head: The first node of linked list.
+   * @return: You should return the head of the sorted linked list,
+                    using constant space complexity.
+  */
+  ListNode *sortList(ListNode *head) {
+    if(head == NULL || head->next == NULL) return head;
+
+    ListNode * fast = head;
+    ListNode * mid  = head;
+    //NOTE: should check fast->next first, then fast->next->next
+    while(fast->next != NULL && fast->next->next != NULL){
+      mid = mid->next;
+      fast = fast->next->next;
+    }
+
+    //Split
+    ListNode * mid_head = mid->next;
+    mid->next = NULL;
+    return merge(sortList(head),sortList(mid_head));
+  }
+};
+```
