@@ -179,8 +179,9 @@ public:
 ```
 
 
-#  Sort List
+#  Sort List(Quick Sort)
 Sort a linked list in O(n log n) time using constant space complexity
+http://www.lintcode.com/en/problem/sort-list/
 
 ```
 /**
@@ -270,6 +271,12 @@ public:
     }
 };
 ```
+
+
+#  Sort List(Merge Sort)
+Sort a linked list in O(n log n) time using constant space complexity
+http://www.lintcode.com/en/problem/sort-list/
+
 
 ```
 /**
