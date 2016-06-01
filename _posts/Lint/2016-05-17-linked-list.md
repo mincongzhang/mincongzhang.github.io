@@ -350,7 +350,7 @@ private:
 
     int mid = (begin+end)/2;
 
-    TreeNodePtr left_sub_tree = buildBST(L,begin,mid);
+    TreeNodePtr left_sub_tree = buildBST(L,begin,mid);//NOTE: L will get updated inside(pass by reference)
     TreeNodePtr root = new TreeNode(L->val);
     L = L->next;
     TreeNodePtr right_sub_tree = buildBST(L,mid+1,end);
