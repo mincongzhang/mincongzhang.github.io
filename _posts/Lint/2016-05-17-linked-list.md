@@ -334,3 +334,46 @@ public:
   }
 };
 ```
+
+###  Convert Sorted List to Balanced BST
+Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+
+```
+//O(n) solution
+
+class Solution {
+typedef ListNode * ListNodePtr;
+typedef TreeNode * TreeNodePtr;
+private:
+  TreeNodePtr buildBST(ListNodePtr & L, const int & begin, const int & end){
+    if(begin >= end) return NULL;
+
+    int mid = (begin+end)/2;
+
+    TreeNodePtr left_sub_tree = buildBST(L,begin,mid);
+    TreeNodePtr root = new TreeNode(L->val);
+    L = L->next;
+    TreeNodePtr right_sub_tree = buildBST(L,mid+1,end);
+
+    root->left = left_sub_tree;
+    root->right = right_sub_tree;
+    return root;
+  }
+
+public:
+  /**
+   * @param head: The first node of linked list.
+   * @return: a tree node
+   */
+  TreeNode *sortedListToBST(ListNode *L) {
+    int list_size = 0;
+    ListNodePtr list_iter = L;
+    while(list_iter){
+      list_size++;
+      list_iter = list_iter->next;
+    }
+
+    return buildBST(L,0,list_size);
+  }
+};
+```
