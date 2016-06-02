@@ -377,3 +377,41 @@ public:
   }
 };
 ```
+
+```
+//O(nlogn)
+class Solution {
+  typedef ListNode * ListNodePtr;
+  typedef TreeNode * TreeNodePtr;
+
+public:
+  /**
+   * @param head: The first node of linked list.
+   * @return: a tree node
+   */
+  TreeNode *sortedListToBST(ListNode *L) {
+    if(L == NULL) return NULL;
+    if(L->next == NULL) return new TreeNode(L->val);
+
+    ListNode pre_head(INT_MIN);
+    pre_head.next = L;
+
+    ListNodePtr pre_mid = &pre_head;
+    ListNodePtr iter    = L;
+    while(iter->next && iter->next->next){
+      pre_mid = pre_mid->next;
+      iter = iter->next->next;
+    }
+
+    ListNodePtr mid = pre_mid->next;
+    pre_mid->next = NULL;
+
+    TreeNodePtr root = new TreeNode(mid->val);
+    root->left = sortedListToBST(pre_head.next);
+    //NOTE: pre_head can be pre_mid so next could be NULL, thus cannot pass "L" into it
+    root->right = sortedListToBST(mid->next);
+
+    return root;
+  }
+};
+```
