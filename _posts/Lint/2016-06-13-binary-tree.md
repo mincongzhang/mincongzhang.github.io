@@ -219,3 +219,27 @@ public:
   }
 };
 ```
+
+###  Maximum Depth of Binary Tree
+Given a binary tree, find its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+http://www.lintcode.com/en/problem/maximum-depth-of-binary-tree/
+
+```
+class Solution {
+public:
+  /**
+   * @param root: The root of binary tree.
+   * @return: An integer
+   */
+  int maxDepth(TreeNode *root) {
+    if(root == NULL) return 0;
+
+    int left_depth = maxDepth(root->left);
+    int right_depth = maxDepth(root->right);
+
+    return ( left_depth > right_depth ? left_depth : right_depth )+1;
+  }
+};
+```
