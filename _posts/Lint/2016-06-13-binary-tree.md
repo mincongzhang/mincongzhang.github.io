@@ -164,3 +164,58 @@ public:
   }
 };
 ```
+
+### Insert Node in a Binary Search Tree
+Given a binary search tree and a new tree node, insert the node into the tree. You should keep the tree still be a valid binary search tree.
+
+http://www.lintcode.com/en/ladder/
+
+```
+/**
+ * Definition of TreeNode:
+ * class TreeNode {
+ * public:
+ *     int val;
+ *     TreeNode *left, *right;
+ *     TreeNode(int val) {
+ *         this->val = val;
+ *         this->left = this->right = NULL;
+ *     }
+ * }
+ */
+class Solution {
+public:
+  /**
+   * @param root: The root of the binary search tree.
+   * @param node: insert this node into the binary search tree
+   * @return: The root of the new binary search tree.
+   */
+  TreeNode* insertNode(TreeNode* root, TreeNode* node) {
+    if(node == NULL) return root;
+    if(root == NULL) return node;
+
+    TreeNode* cur_node = root;
+    while(true){
+      //> current node
+      if(node->val > cur_node->val){
+        if(cur_node->right){
+          cur_node = cur_node->right;
+        } else {
+          cur_node->right = node;
+          break;
+        }
+        //<= current node
+      } else {
+        if(cur_node->left){
+          cur_node = cur_node->left;
+        } else {
+          cur_node->left = node;
+          break;
+        }
+      }
+    }
+
+    return root;
+  }
+};
+```
