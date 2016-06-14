@@ -115,3 +115,52 @@ public:
 ```
 //Morris Traversal
 ```
+
+
+### Balanced Binary Tree
+Given a binary tree, determine if it is height-balanced.
+For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+
+http://www.lintcode.com/en/problem/balanced-binary-tree/
+
+```
+/**
+ * Definition of TreeNode:
+ * class TreeNode {
+ * public:
+ *     int val;
+ *     TreeNode *left, *right;
+ *     TreeNode(int val) {
+ *         this->val = val;
+ *         this->left = this->right = NULL;
+ *     }
+ * }
+ */
+#include <stdlib.h>
+class Solution {
+  bool checkBalance(TreeNode *root,int & depth){
+    if(root==NULL) return true;
+
+    int left_depth(depth),right_depth(depth);
+    if(checkBalance(root->left,left_depth) && checkBalance(root->right,right_depth)){
+      if(std::abs(left_depth-right_depth) > 1) return false;
+
+      depth = (left_depth>right_depth? left_depth:right_depth)+1;
+      return true;
+    }
+
+    return false;
+  }
+
+
+public:
+  /**
+   * @param root: The root of binary tree.
+   * @return: True if this Binary tree is Balanced, or false.
+   */
+  bool isBalanced(TreeNode *root) {
+    int depth(0);
+    return checkBalance(root,depth);
+  }
+};
+```
