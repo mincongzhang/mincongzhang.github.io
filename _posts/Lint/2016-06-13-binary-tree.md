@@ -277,3 +277,46 @@ public:
   }
 };
 ```
+
+### Binary Tree Level Order Traversal
+Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+http://www.lintcode.com/en/problem/binary-tree-level-order-traversal/
+
+```
+#include <queue>
+
+class Solution {
+
+  /**
+   * @param root: The root of binary tree.
+   * @return: Level order a list of lists of integer
+   */
+typedef TreeNode * TreeNodePtr;
+public:
+  vector<vector<int>> levelOrder(TreeNode *root) {
+    vector<vector<int>> out;
+    if(root == NULL) return out;
+
+    std::queue<TreeNodePtr> Q;
+    Q.push(root);
+
+    while(!Q.empty()){
+      unsigned int q_size = Q.size();
+
+      std::vector<int> level_values;
+      while(q_size--){
+        TreeNodePtr cur_node = Q.front();
+        Q.pop();
+        level_values.push_back(cur_node->val);
+
+        if(cur_node->left) Q.push(cur_node->left);
+        if(cur_node->right) Q.push(cur_node->right);
+
+      }
+      out.push_back(level_values);
+    }
+
+    return out;
+  }
+};
+```
