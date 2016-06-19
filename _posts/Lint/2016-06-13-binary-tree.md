@@ -320,3 +320,46 @@ public:
   }
 };
 ```
+
+### Validate Binary Search Tree
+Given a binary tree, determine if it is a valid binary search tree (BST).
+http://www.lintcode.com/en/problem/validate-binary-search-tree/
+*key point: need to check min,max range for each node. 
+
+
+```
+class Solution {
+  typedef TreeNode * TreeNodePtr;
+private:
+  bool isValidBST(TreeNodePtr left,TreeNodePtr root,TreeNodePtr right,int min, int max){
+    if(root==NULL) return true;
+
+    //NOTE: important here
+    if(root->val < min || root->val > max){
+        return false;
+    }
+
+    bool valid_left = true;
+    if(left){
+      valid_left = (left->val < root->val) && isValidBST(left->left,left,left->right,min,root->val);
+    }
+
+    bool valid_right = true;
+    if(right){
+      valid_right = (right->val > root->val) && isValidBST(right->left,right,right->right,root->val,max);
+    }
+
+    return valid_left&&valid_right;
+  }
+
+public:
+  /**
+   * @param root: The root of binary tree.
+   * @return: True if the binary tree is BST, or false
+   */
+  bool isValidBST(TreeNode *root) {
+    if(root == NULL) return true;
+    return isValidBST(root->left,root,root->right,INT_MIN,INT_MAX);
+  }
+};
+```
