@@ -363,3 +363,50 @@ public:
   }
 };
 ```
+
+### Construct Binary Tree from Preorder and Inorder Traversal
+Given preorder and inorder traversal of a tree, construct the binary tree.
+http://www.lintcode.com/en/problem/construct-binary-tree-from-preorder-and-inorder-traversal/
+
+```
+ #include <unordered_map>
+ #include <utility>
+
+class Solution {
+    /**
+     *@param preorder : A list of integers that preorder traversal of a tree
+     *@param inorder : A list of integers that inorder traversal of a tree
+     *@return : Root of a tree
+     */
+
+typedef TreeNode * TreeNodePtr; 
+private:
+    std::unordered_map<int,size_t> m_inorder_map;
+    vector<int> m_preorder, m_inorder;
+    size_t m_pre_it;
+    TreeNodePtr build(const size_t & begin, const size_t & end){
+        if(m_pre_it>=m_preorder.size() || begin>=end) return NULL;
+        
+        int current_pre_val = m_preorder[m_pre_it];
+        m_pre_it++;
+        
+        TreeNodePtr node = new TreeNode(current_pre_val);
+        node->left = build(begin,m_inorder_map[current_pre_val]);
+        node->right = build(m_inorder_map[current_pre_val]+1,end);
+        return node;
+    }
+    
+public:
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+        for(size_t i(0);i<inorder.size();++i){
+            m_inorder_map.insert(std::pair<int,size_t>(inorder[i],i));
+        }
+        
+        m_preorder = preorder;
+        m_inorder  = inorder;
+        m_pre_it   = 0;
+        
+        return build(0,preorder.size());
+    }
+};
+```
