@@ -410,3 +410,96 @@ public:
     }
 };
 ```
+
+### Binary Tree Serialization
+Design an algorithm and write code to serialize and deserialize a binary tree. Writing the tree to a file is called 'serialization' and reading back from the file to reconstruct the exact same binary tree is 'deserialization'.
+
+There is no limit of how you deserialize or serialize a binary tree, you only need to make sure you can serialize a binary tree to a string and deserialize this string to the original structure.
+
+http://www.lintcode.com/en/problem/binary-tree-serialization/
+
+
+```
+#include <string>
+
+namespace {
+  const char DELIMITER = '#';
+}
+
+class Solution {
+  typedef TreeNode * TreeNodePtr;
+
+public:
+  /**
+   * This method will be invoked first, you should design your own algorithm
+   * to serialize a binary tree which denote by a root node to a string which
+   * can be easily deserialized by your own "deserialize" method later.
+   */
+  string serialize(TreeNodePtr root) {
+    std::string data;
+    serialize(root,data);
+    return data;
+  }
+
+  /**
+   * This method will be invoked second, the argument data is what exactly
+   * you serialized at method "serialize", that means the data is not given by
+   * system, it's given by your own serialize method. So the format of data is
+   * designed by yourself, and deserialize it here as you serialize it in
+   * "serialize" method.
+   */
+  TreeNodePtr deserialize(string data) {
+    size_t start(0);
+    return deserialize(data,start);
+  }
+
+private:
+  void serialize(TreeNodePtr root,std::string & data){
+    if(root == NULL){
+      data += DELIMITER;
+      data += " ";
+      return;
+    }
+
+    data += std::to_string(root->val)+" ";
+    serialize(root->left,data);
+    serialize(root->right,data);
+  }
+
+  TreeNodePtr deserialize(const std::string & data,size_t & start){
+    int num(0);
+    if(!getNumber(data,start,num)){
+      return NULL;
+    }
+
+    TreeNodePtr node = new TreeNode(num);
+    node->left  = deserialize(data,start);
+    node->right = deserialize(data,start);
+    return node;
+  }
+
+  bool getNumber(const std::string & data, size_t & start, int & num){
+    //if(start >= data.size()) return false;
+
+    if(data[start] == DELIMITER){
+      start += 2; //DELIMITER + " "
+      return false;
+    }
+
+    int sign = 1;
+    if(data[start] == '-'){
+      sign = -1;
+      start++;
+    }
+
+    for (num = 0; isdigit(data[start]); ++(start)) {
+      num = num * 10 + data[start] - '0';
+    }
+    start++;// skip " "
+
+    num *= sign;
+    return true;
+  }
+
+};
+```
