@@ -503,3 +503,71 @@ private:
 
 };
 ```
+
+### Remove Node in Binary Search Tree
+Given a root of Binary Search Tree with unique value for each node. Remove the node with given value. If there is no such a node with given value in the binary search tree, do nothing. You should keep the tree still a binary search tree after removal.
+
+http://www.lintcode.com/en/problem/remove-node-in-binary-search-tree/
+
+```
+#include <algorithm>
+class Solution {
+  typedef TreeNode * TreeNodePtr;
+
+private:
+  void removeEqual(TreeNodePtr & root){
+    if(root->right == NULL){
+      TreeNodePtr tmp = root;
+      root = root->left;
+      delete tmp;
+      return;
+    }
+
+    if(root->right->left == NULL){
+      std::swap(root->right->val,root->val);
+      TreeNodePtr tmp = root->right;
+      root->right = root->right->right;
+      delete tmp;
+      return;
+    }
+
+    TreeNodePtr most_left_parent = root->right;
+    TreeNodePtr most_left = root->right->left;
+    while(most_left->left){
+      most_left_parent = most_left_parent->left;
+      most_left = most_left->left;
+    }
+
+    std::swap(most_left->val,root->val);
+    most_left_parent->left = most_left->right;
+    delete most_left;
+  }
+
+  void remove(TreeNodePtr & root, const int value){
+    if(root == NULL) return;
+
+    if(root->val == value){
+      removeEqual(root);
+      return;
+    }
+
+    if(root->val > value){
+      remove(root->left,value);
+    } else {
+      remove(root->right,value);
+    }
+  }
+
+public:
+  /**
+   * @param root: The root of the binary search tree.
+   * @param value: Remove the node with given value.
+   * @return: The root of the binary search tree after removal.
+   */
+  TreeNode* removeNode(TreeNode* root, int value) {
+    remove(root,value);
+    return root;
+  }
+};
+
+```
