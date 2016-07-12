@@ -271,3 +271,56 @@ public:
 };
 
 ```
+
+
+### SUDOKU
+
+```
+class Solution {
+private:
+	vector<vector<int>> m_board;
+	size_t m_size;
+	
+	void getBoard(const vector<vector<char>>& board){}
+	
+	bool canPlace(int row,int col,int num){
+		for(int r=0; r<m_size; ++r){
+			if(m_board[r][col] == num) return false;
+		}
+		
+		for(int c=0;c<m_size; ++c){
+			if(m_board[row][c] == num) return false;
+		}
+		
+		//box
+	}
+	
+	bool solveSudoku(const int col){
+		if(col == m_size) return true;
+		
+		for(int i=0; i<=9; ++i){
+			for(int row=0; row<m_size; ++row){
+				if(m_board[row][col] > 0) continue;
+				if(canPlace(row,col,num){
+					m_board[row][col] = i;
+					return solveSudoku(col+1);
+				}
+				m_board[row][col] = 0;
+			}
+		}
+		
+		return false;
+	}	
+	
+public:
+    /**
+      * @param board: the board
+      * @return: wether the Sudoku is valid
+      */
+    bool isValidSudoku(const vector<vector<char>>& board) {
+		m_size = board.size();
+		getBoard(board);
+        return solveSudoku(0);
+    }
+};
+```
