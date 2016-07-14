@@ -377,3 +377,36 @@ public:
   }
 };
 ```
+
+### Subsets
+
+Given a set of distinct integers, return all possible subsets.  
+http://www.lintcode.com/en/problem/subsets/
+
+```
+class Solution {
+public:
+  /**
+   * @param S: A set of numbers.
+   * @return: A list of lists. All valid subsets.
+   */
+  vector<vector<int> > subsets(vector<int> &nums) {
+    size_t subset_size = 1 << nums.size();
+
+    vector<vector<int> > result;
+    for(size_t i=0; i<subset_size; ++i){
+      vector<int> subset;
+      size_t cur_i = i;
+      size_t idx = 0;
+      while(cur_i){
+        if(cur_i & 1) subset.push_back(nums[idx]);
+        cur_i >>= 1;
+        idx++;
+      }
+      result.push_back(subset);
+    }
+
+    return result;
+  }
+};
+```
