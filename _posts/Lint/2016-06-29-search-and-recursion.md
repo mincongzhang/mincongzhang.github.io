@@ -427,6 +427,8 @@ public:
   */
 
   vector<vector<int> > subsets(vector<int> &nums) {
+    //Or initialize with 1 empty element
+    //vector<vector<int> > result(1);
     vector<vector<int> > result(1);
     for(size_t i=0; i<nums.size(); ++i){
       size_t result_size = result.size();
