@@ -17,6 +17,7 @@ http://www.lintcode.com/en/problem/maximum-subarray/
 //Solution2 O(nlogn)
 //Binary search, search left, and search right, and recursively solve the problem
 
+//Solution3 O(n) update local max and global max at the same time
 class Solution {
 public:
   /**
