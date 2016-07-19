@@ -6,6 +6,85 @@ description: Lintcode
 tags: ["C++","算法"]
 ---
 
+### Maximum Subarray
+Given an array of integers, find a contiguous subarray which has the largest sum.  
+http://www.lintcode.com/en/problem/maximum-subarray/  
+
+```
+class Solution {
+public:
+  /**
+   * @param nums: A list of integers
+   * @return: A integer indicate the sum of max subarray
+   */
+  int maxSubArray(vector<int> nums) {
+    if(nums.empty()) return 0;
+
+    int local_max(INT_MIN),max(INT_MIN);
+    for(size_t i=0; i<nums.size(); ++i){
+      if(local_max<0){
+        local_max = nums[i];
+      } else {
+        local_max += nums[i];
+      }
+
+      if(local_max > max){
+        max = local_max;
+      }
+    }
+
+    return max;
+  }
+};
+```
+
+### Triangle
+Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.  
+http://www.lintcode.com/en/problem/triangle/  
+
+```
+class Solution {
+public:
+    /**
+     * @param triangle: a list of lists of integers.
+     * @return: An integer, minimum path sum.
+     */
+    int minimumTotal(vector<vector<int> > &A) {
+        if(A.empty())     return 0;
+        if(A.size() == 1) return A[0][0];
+        
+        const unsigned int row_num = A.size();
+        unsigned int row,row_elem;
+        
+        //end at last-1 row
+        for(row = 0; row < row_num-1; ++row){  
+            //first elem of row+1
+            A[row+1][0] += A[row][0];
+            
+            //start from 2nd element
+            for(row_elem = 1; row_elem < A[row].size(); row_elem++){ 
+                if(A[row][row_elem-1] < A[row][row_elem])
+                    A[row+1][row_elem] += A[row][row_elem-1];
+                else
+                    A[row+1][row_elem] += A[row][row_elem];
+            }
+            
+            //last elem of row+1
+            A[row+1][A[row].size()] += A[row][A[row].size()-1];
+        }
+        
+        //loop last row, get min
+        vector<int> last_row = A[A.size()-1];
+        int min = last_row[0];
+        for(vector<int>::const_iterator i=last_row.begin();i!=last_row.end();++i){
+            if(min > *i) min = *i;
+        }
+        
+        return min;
+    }
+};
+```
+
 ### Unique Paths
 
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
