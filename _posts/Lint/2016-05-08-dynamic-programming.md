@@ -66,6 +66,31 @@ public:
 };
 ```
 
+```
+class Solution {
+public:
+  /**
+   * @param n: An integer
+   * @return: An integer
+   */
+  int climbStairs(int n) {
+    if(n<=0) return 1;
+    if(n==1) return 1;
+    if(n==2) return 2;
+
+    std::vector<int> stairs(n,0);
+    stairs[0] = 1;
+    stairs[1] = 2;
+    for(size_t i=2; i<n; ++i){
+      stairs[i] = stairs[i-1] + stairs[i-2];
+    }
+
+    return stairs.back();
+  }
+};
+```
+
+
 ### Triangle
 Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.  
 http://www.lintcode.com/en/problem/triangle/  
