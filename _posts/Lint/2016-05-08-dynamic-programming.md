@@ -11,6 +11,12 @@ Given an array of integers, find a contiguous subarray which has the largest sum
 http://www.lintcode.com/en/problem/maximum-subarray/  
 
 ```
+//Solution1 O(n^2)
+//For every element, go forward and find max, update global max
+
+//Solution2 O(nlogn)
+//Binary search, search left, and search right, and recursively solve the problem
+
 class Solution {
 public:
   /**
