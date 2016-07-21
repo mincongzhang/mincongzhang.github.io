@@ -12,3 +12,4 @@ https://www.quora.com/How-would-you-explain-an-algorithm-that-generates-permutat
 
 Edit Distance:  
 http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/  
+https://web.stanford.edu/class/cs124/lec/med.pdf  
