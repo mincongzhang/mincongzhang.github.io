@@ -11,6 +11,7 @@ Next Permutations:
 https://www.quora.com/How-would-you-explain-an-algorithm-that-generates-permutations-using-lexicographic-ordering
 
 Edit Distance:  
-http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/  
-https://web.stanford.edu/class/cs124/lec/med.pdf  
 http://algorithms.tutorialhorizon.com/dynamic-programming-edit-distance-problem/  
+
+Word Break:  
+http://algorithms.tutorialhorizon.com/the-word-break-problem/
