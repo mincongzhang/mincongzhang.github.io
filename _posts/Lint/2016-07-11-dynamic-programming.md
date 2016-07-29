@@ -352,3 +352,33 @@ public:
   }
 };
 ```
+
+### Word Break (unsolved)
+
+```
+class Solution {
+public:
+  /**
+   * @param s: A string s
+   * @param dict: A dictionary of words dict
+   */
+  bool wordBreak(string s, unordered_set<string> &dict) {
+    if(dict.empty() && s.empty()) return true;
+    if(dict.empty()) return false;
+    if(s.size()==1) return dict.find(s)!=dict.end();
+
+    size_t str_size = s.size();
+
+    size_t start_i = 0;
+    for(size_t i=1; i<=str_size; ++i){
+      std::string tmp_str = s.substr(start_i,i-start_i);
+      if(dict.find(tmp_str)!=dict.end()){
+        start_i = i;
+      }
+      //std::cout<<start_i<<std::endl;
+    }
+
+    return start_i==str_size;
+  }
+};
+```
