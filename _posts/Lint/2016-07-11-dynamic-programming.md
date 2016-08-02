@@ -353,10 +353,26 @@ public:
 };
 ```
 
-### Word Break (unsolved)
+### Word Break
+Given a string s and a dictionary of words dict, determine if s can be break into a space-separated sequence of one or more dictionary words.  
+e.g. Given s = "lintcode", dict = ["lint", "code"]. Return true because "lintcode" can be break as "lint code".  
+http://www.lintcode.com/en/problem/word-break/  
 
 ```
 class Solution {
+private:
+  bool breaking(const std::string & s, const unordered_set<string> & dict, size_t begin){
+    if(begin == s.size()) return true;
+
+    for(size_t i=begin+1; i<=s.size(); ++i){
+      std::string tmp_str = s.substr(begin,i-begin);
+      if(dict.find(tmp_str)!=dict.end() && breaking(s,dict,i)){
+        return true;
+      }
+    }
+    return false;
+  }
+
 public:
   /**
    * @param s: A string s
@@ -367,18 +383,7 @@ public:
     if(dict.empty()) return false;
     if(s.size()==1) return dict.find(s)!=dict.end();
 
-    size_t str_size = s.size();
-
-    size_t start_i = 0;
-    for(size_t i=1; i<=str_size; ++i){
-      std::string tmp_str = s.substr(start_i,i-start_i);
-      if(dict.find(tmp_str)!=dict.end()){
-        start_i = i;
-      }
-      //std::cout<<start_i<<std::endl;
-    }
-
-    return start_i==str_size;
+    return breaking(s,dict,0);
   }
 };
 ```
