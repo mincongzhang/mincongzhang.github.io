@@ -435,6 +435,7 @@ private:
   bool breaking(const std::string & s, const unordered_set<string> & dict){
     size_t begin = 0;
     std::queue<size_t> Q;
+    std::unordered_set<size_t> false_begin;
     Q.push(begin);
 
     while(!Q.empty()){
@@ -444,12 +445,14 @@ private:
       for(size_t i=begin_i+1; i<=s.size(); ++i){
         std::string tmp_str = s.substr(begin_i,i-begin_i);
         if(dict.find(tmp_str)!=dict.end()){
-          //begin_i = i; NOTE: should check the whole string rather than jump
-          Q.push(i);
+            if(i==s.size()){
+                return true;
+            } else {
+                Q.push(i);
+            }
         }
-      }
-      if(begin_i==s.size()) return true;
-    }
+      }//for
+    }//while
 
     return false;
   }
