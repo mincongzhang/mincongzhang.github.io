@@ -387,3 +387,39 @@ public:
   }
 };
 ```
+
+```
+#include <utility>//Pair
+class Solution {
+private:
+  std::unordered_set<std::string> m_false_dict;
+  bool breaking(const std::string & s, const unordered_set<string> & dict, size_t begin){
+    if(begin == s.size()) return true;
+
+    for(size_t i=begin+1; i<=s.size(); ++i){
+      std::string tmp_str = s.substr(begin,i-begin);
+      if(dict.find(tmp_str)!=dict.end() && m_false_dict.find(tmp_str)==m_false_dict.end()){
+        if(breaking(s,dict,i)){
+          return true;
+        } else {
+          m_false_dict.insert(tmp_str);
+        }
+      }
+    }
+    return false;
+  }
+
+public:
+  /**
+   * @param s: A string s
+   * @param dict: A dictionary of words dict
+   */
+  bool wordBreak(string s, unordered_set<string> &dict) {
+    if(dict.empty() && s.empty()) return true;
+    if(dict.empty()) return false;
+    if(s.size()==1) return dict.find(s)!=dict.end();
+
+    return breaking(s,dict,0);
+  }
+};
+```
