@@ -359,6 +359,7 @@ e.g. Given s = "lintcode", dict = ["lint", "code"]. Return true because "lintcod
 http://www.lintcode.com/en/problem/word-break/  
 
 ```
+//Basic solution with recursion
 class Solution {
 private:
   bool breaking(const std::string & s, const unordered_set<string> & dict, size_t begin){
@@ -389,6 +390,7 @@ public:
 ```
 
 ```
+//Dynamic programming with recursion
 #include <utility>//Pair
 class Solution {
 private:
@@ -420,6 +422,49 @@ public:
     if(s.size()==1) return dict.find(s)!=dict.end();
 
     return breaking(s,dict,0);
+  }
+};
+```
+
+```
+//Basic solution without recursion
+#include <utility>//Pair
+class Solution {
+private:
+  //std::unordered_map<std::string,bool> m_false_dict;
+  bool breaking(const std::string & s, const unordered_set<string> & dict){
+    size_t begin = 0;
+    std::queue<size_t> Q;
+    Q.push(begin);
+
+    while(!Q.empty()){
+      size_t begin_i = Q.front();
+      Q.pop();
+
+      for(size_t i=begin_i+1; i<=s.size(); ++i){
+        std::string tmp_str = s.substr(begin_i,i-begin_i);
+        if(dict.find(tmp_str)!=dict.end()){
+          //begin_i = i; NOTE: should check the whole string rather than jump
+          Q.push(i);
+        }
+      }
+      if(begin_i==s.size()) return true;
+    }
+
+    return false;
+  }
+
+public:
+  /**
+   * @param s: A string s
+   * @param dict: A dictionary of words dict
+   */
+  bool wordBreak(string s, unordered_set<string> &dict) {
+    if(dict.empty() && s.empty()) return true;
+    if(dict.empty()) return false;
+    if(s.size()==1) return dict.find(s)!=dict.end();
+
+    return breaking(s,dict);
   }
 };
 ```
