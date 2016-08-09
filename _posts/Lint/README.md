@@ -17,5 +17,4 @@ Word Break:
 http://algorithms.tutorialhorizon.com/the-word-break-problem/
 
 Distinct Subsequences:  
-http://bangbingsyb.blogspot.co.uk/2014/11/leetcode-distinct-subsequences.html  
-http://traceformula.blogspot.co.uk/2015/08/distinct-subsequences.html
+http://blog.csdn.net/abcbc/article/details/8978146  
