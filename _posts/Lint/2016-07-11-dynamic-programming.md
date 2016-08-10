@@ -542,14 +542,14 @@ private:
   std::string m_T;
 
   int getNumDistinct(size_t s_start, size_t t_start){
-    if(s_start == m_S.size()){
-      //when S is empty but we still have T, means we have no distinct subsequences
-      return t_start==m_T.size()? 1 : 0;
-    }
-
     //When there is no T left, we have 1 distinct subsequence
     if(t_start==m_T.size()){
       return 1;
+    }
+
+    if(s_start == m_S.size()){
+      //when S is empty but we still have T, means we have no distinct subsequences
+      return 0;
     }
 
     int num = 0;
