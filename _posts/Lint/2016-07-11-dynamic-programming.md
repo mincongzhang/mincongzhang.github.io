@@ -525,3 +525,51 @@ public:
   }
 };
 ```
+
+### Distinct Subsequences
+Given a string S and a string T, count the number of distinct subsequences of T in S.
+
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).  
+
+http://www.lintcode.com/en/problem/distinct-subsequences/  
+
+```
+class Solution {
+
+private:
+  std::string m_S;
+  std::string m_T;
+
+  int getNumDistinct(size_t s_start, size_t t_start){
+    if(s_start == m_S.size()){
+      //when S is empty but we still have T, means we have no distinct subsequences
+      return t_start==m_T.size()? 1 : 0;
+    }
+
+    //When there is no T left, we have 1 distinct subsequence
+    if(t_start==m_T.size()){
+      return 1;
+    }
+
+    int num = 0;
+    for(size_t s=s_start; s<m_S.size(); ++s){
+      if(m_S[s]==m_T[t_start]){
+        num += getNumDistinct(s+1,t_start+1);
+      }
+    }
+
+    return num;
+  }//getNumDistinct
+
+public:
+  /**
+   * @param S, T: Two string.
+   * @return: Count the number of distinct subsequences
+   */
+  int numDistinct(string &S, string &T) {
+    m_S = S;
+    m_T = T;
+    return getNumDistinct(0,0);
+  }
+};
+```
