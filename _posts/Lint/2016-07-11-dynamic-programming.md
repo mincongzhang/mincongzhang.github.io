@@ -555,6 +555,13 @@ private:
     int num = 0;
     for(size_t s=s_start; s<m_S.size(); ++s){
       if(m_S[s]==m_T[t_start]){
+        //e.g.
+        //S: xxxabcxxxabc T:abc, awnser is 4
+        //we can do:
+        //---abc------
+        //---------abc
+        //---a------bc
+        //---ab------c
         num += getNumDistinct(s+1,t_start+1);
       }
     }
