@@ -534,6 +534,7 @@ A subsequence of a string is a new string which is formed from the original stri
 http://www.lintcode.com/en/problem/distinct-subsequences/  
 
 ```
+//recursive solution
 class Solution {
 
 private:
