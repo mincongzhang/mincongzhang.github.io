@@ -18,3 +18,4 @@ http://algorithms.tutorialhorizon.com/the-word-break-problem/
 
 Distinct Subsequences:  
 http://blog.csdn.net/abcbc/article/details/8978146  
+http://stackoverflow.com/questions/5151483/how-to-find-the-number-of-distinct-subsequences-of-a-string  
