@@ -605,9 +605,9 @@ public:
 
 //start from bottom right
 //if (S[i] == T[j]) {
-//    f[j] = f[j] + f[j+1];
+//    N[i][j] = N[i+1][j] + N[i+1][j+1];
 //} else {
-//    f[j] = f[j];
+//    N[i][j] = N[i+1][j];
 //}
 
 //DP:
