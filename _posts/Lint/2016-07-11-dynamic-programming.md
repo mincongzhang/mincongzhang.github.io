@@ -585,3 +585,35 @@ public:
   }
 };
 ```
+
+```
+//Dynamic programming
+//e.g.
+//S: xxxabcxxxabc T:abc, awnser is 4
+//we can do:
+//---abc------
+//---ab------c
+//---a------bc
+//---------abc
+
+//DP:
+//  x x x a b c x x x a b c
+//a - - - - - - - - - - - - 0
+//b - - - - - - - - - - - - 0
+//c - - - - - - - - - - - - 0
+//  1 1 1 1 1 1 1 1 1 1 1 1 1
+
+//start from bottom right
+//if (S[i] == T[j]) {
+//    f[j] = f[j] + f[j+1];
+//} else {
+//    f[j] = f[j];
+//}
+
+//DP:
+//  x x x a b c x x x a b c
+//a 4 4 4 4 1 1 1 1 1 1 0 0 0
+//b 3 3 3 3 3 1 1 1 1 1 1 0 0
+//c 2 2 2 2 2 2 1 1 1 1 1 1 0
+//  1 1 1 1 1 1 1 1 1 1 1 1 1
+```
