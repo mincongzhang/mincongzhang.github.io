@@ -617,3 +617,20 @@ public:
 //c 2 2 2 2 2 2 1 1 1 1 1 1 0
 //  1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
+```
+Example
+  Given S = "rabbbit", T = "rabbit", return 3.
+*/
+/*
+    r a b b b i t
+  1 1 1 1 1 1 1 1
+r 0 1 1 1 1 1 1 1
+a 0 0 1 1 1 1 1 1
+b 0 0 0 1 2 3 3 3
+b 0 0 0 0 1 3 3 3
+i 0 0 0 0 0 0 3 3
+t 0 0 0 0 0 0 0 3
+*/
+//if (!=) =left (inherit the previous count)
+//if (==) =left+upper_left, it means if equal, add the result of previous compare [x-1][y-1]
+```
