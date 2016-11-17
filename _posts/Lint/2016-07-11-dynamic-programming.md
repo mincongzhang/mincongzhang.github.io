@@ -618,11 +618,11 @@ public:
 //  1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 ```
+/*
 Example
   Given S = "rabbbit", T = "rabbit", return 3.
-*/
-/*
-    r a b b b i t
+
+    r a b b b i t S
   1 1 1 1 1 1 1 1
 r 0 1 1 1 1 1 1 1
 a 0 0 1 1 1 1 1 1
@@ -630,7 +630,39 @@ b 0 0 0 1 2 3 3 3
 b 0 0 0 0 1 3 3 3
 i 0 0 0 0 0 0 3 3
 t 0 0 0 0 0 0 0 3
+T
 */
 //if (!=) =left (inherit the previous count)
-//if (==) =left+upper_left, it means if equal, add the result of previous compare [x-1][y-1]
+//if (==) =left+upper_left, it means if equal, add the result of previous compare [x-1][y-1]/*
+
+class Solution {
+
+public:
+  /**
+   * @param S, T: Two string.
+   * @return: Count the number of distinct subsequences
+   */
+  int numDistinct(string &S, string &T) {
+    //count[s][t]
+    vector<int> T_count(T.size()+1,0);
+    vector< vector<int> > count(S.size()+1,T_count);
+
+    for(size_t s=0; s<count.size();++s){
+      count[s][0]=1;
+    }
+
+    for(size_t s=0; s<S.size();++s){
+      for(size_t t=0; t<T.size();++t){
+        if(S[s]!=T[t]){
+          count[s+1][t+1]=count[s][t+1];
+        } else {
+          count[s+1][t+1]=count[s][t+1]+count[s][t];
+        }
+      }
+    }
+
+    return count.back().back();
+  }
+};
+
 ```
