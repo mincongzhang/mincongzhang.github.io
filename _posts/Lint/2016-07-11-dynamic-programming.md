@@ -618,6 +618,7 @@ public:
 //  1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 ```
+Dynamic programming space O(T*S)
 /*
 Example
   Given S = "rabbbit", T = "rabbit", return 3.
