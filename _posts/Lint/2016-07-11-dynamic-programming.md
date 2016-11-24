@@ -703,4 +703,18 @@ public:
     return count.back();
   }
 };
+
+//The same if you go the other way round
+/*
+   r a b b b i t S
+r  3 0 0 0 0 0 0
+a  3 3 0 0 0 0 0
+b  3 3 3 3 1 0 0
+b  2 2 2 2 1 0 0
+i  2 1 1 1 1 1 0
+t  1 1 1 1 1 1 1
+   1 1 1 1 1 1 1
+T
+*/
+
 ```
