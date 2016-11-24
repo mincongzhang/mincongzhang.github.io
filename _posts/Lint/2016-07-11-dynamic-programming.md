@@ -587,7 +587,7 @@ public:
 ```
 
 ```
-//Dynamic programming
+//Dynamic programming space O(T*S)
 //e.g.
 //S: xxxabcxxxabc T:abc, awnser is 4
 //we can do:
@@ -664,5 +664,42 @@ public:
     return count.back().back();
   }
 };
+```
 
+```
+//Dynamic programming, space O(T)
+/*
+   r a b b b i t S
+   1 1 1 1 1 1 1
+r  1 1 1 1 1 1 1
+a  0 1 1 1 1 1 1
+b  0 0 1 2 3 3 3
+b  0 0 0 1 3 3 3
+i  0 0 0 0 0 3 3
+t  0 0 0 0 0 0 3
+T
+*/
+class Solution {
+
+public:
+  /**
+   * @param S, T: Two string.
+   * @return: Count the number of distinct subsequences
+   */
+  int numDistinct(string &S, string &T) {
+    std::vector<int> count(T.size()+1,0);
+    count[0]=1;
+
+    for(int s=0; s<S.size();++s){
+      //Why backward here? In this way you could get previous compare results without overwrite them
+      for(int t=T.size()-1; t>=0;--t){
+        if(S[s]==T[t]){
+          count[t+1]+=count[t];
+        }
+      }
+    }
+
+    return count.back();
+  }
+};
 ```
