@@ -718,3 +718,80 @@ T
 */
 
 ```
+
+
+### Backpack
+
+Given n items with size Ai, an integer m denotes the size of a backpack. How full you can fill this backpack?
+
+http://www.lintcode.com/en/problem/backpack/
+
+```
+//Dynamic programming
+
+#define log(msg) do{ std::cout<<msg<<"\n"; }while(0)
+
+
+template <typename T>
+inline std::ostream& operator<< (std::ostream &os, const std::vector<T> & value ) {
+    os<<"\n";
+  for(typename std::vector<T>::const_iterator it=value.begin(); it!=value.end(); ++it){
+    os<<"["<<*it<<"]";
+  }
+  return os;
+}
+
+
+class Solution {
+public:
+  /**
+   * @param m: An integer m denotes the size of a backpack
+   * @param A: Given n items with size A[i]
+   * @return: The maximum size
+   */
+  int backPack(int m, std::vector<int> A) {
+    //  mmmmmmmmmmmmm
+    //0
+    //A
+    //A
+    //A
+    
+    //NOTE: weight map should go from 0 to max weight
+    std::vector<int> item_pick(m+1,0);
+    std::vector< std::vector<int> > pack(A.size()+1,item_pick);
+
+    for(int item=1;item<=A.size();++item){
+      for(int weight=0;weight<=m;++weight){
+
+        //weight exceed
+        if(weight-A[item]<0){
+          pack[item][weight] = pack[item-1][weight];
+          continue;
+        }
+
+        int added_weight = pack[item-1][weight-A[item]]+A[item];
+        if(added_weight > weight){
+          //cannot take
+          pack[item][weight] = pack[item-1][weight];
+        } else {
+          //can take
+          if(added_weight > pack[item-1][weight]){
+          pack[item][weight] = added_weight;
+          } else {
+            pack[item][weight] = pack[item-1][weight];
+          }
+        }
+      }//weight loop
+    }//item loop
+
+    if(m==90)
+    log(pack);
+
+    return pack.back().back();
+  }
+};
+```
+
+```
+//Recursive
+```
