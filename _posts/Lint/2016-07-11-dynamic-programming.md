@@ -794,4 +794,30 @@ public:
 
 ```
 //Recursive
+
+class Solution {
+public:
+  /**
+   * @param m: An integer m denotes the size of a backpack
+   * @param A: Given n items with size A[i]
+   * @return: The maximum size
+   */
+  int getWeight(const std::vector<int> & A,size_t item, const int remaining_weight){
+    if(item >= A.size()){ return 0; }
+
+    item++;
+
+    //not taking current item
+    int weight = getWeight(A,item,remaining_weight);
+    if(remaining_weight-A[item] < 0){
+      return weight;
+    }
+
+    return std::max(weight,getWeight(A,item,remaining_weight-A[item])+A[item]);
+  }
+
+  int backPack(int m, std::vector<int> A) {
+    return getWeight(A,0,m);
+  }
+};
 ```
