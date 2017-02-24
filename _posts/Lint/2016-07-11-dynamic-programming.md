@@ -763,6 +763,7 @@ public:
     for(int item=1;item<=A.size();++item){
       for(int weight=0;weight<=m;++weight){
 
+        //NOTE: do this just in case you get A[item], and that's wrong!
         int item_idx = item-1;
 
         //weight exceed
@@ -785,8 +786,6 @@ public:
         }
       }//weight loop
     }//item loop
-
-    //if(m==90) return 83;
 
     return pack.back().back();
   }
