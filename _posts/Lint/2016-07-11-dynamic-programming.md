@@ -755,7 +755,7 @@ public:
     //A
     //A
     //A
-    
+
     //NOTE: weight map should go from 0 to max weight
     std::vector<int> item_pick(m+1,0);
     std::vector< std::vector<int> > pack(A.size()+1,item_pick);
@@ -763,13 +763,15 @@ public:
     for(int item=1;item<=A.size();++item){
       for(int weight=0;weight<=m;++weight){
 
+        int item_idx = item-1;
+
         //weight exceed
-        if(weight-A[item]<0){
+        if(weight-A[item-1]<0){
           pack[item][weight] = pack[item-1][weight];
           continue;
         }
 
-        int added_weight = pack[item-1][weight-A[item]]+A[item];
+        int added_weight = pack[item-1][weight-A[item_idx]]+A[item_idx];
         if(added_weight > weight){
           //cannot take
           pack[item][weight] = pack[item-1][weight];
@@ -784,8 +786,7 @@ public:
       }//weight loop
     }//item loop
 
-    if(m==90)
-    log(pack);
+    //if(m==90) return 83;
 
     return pack.back().back();
   }
