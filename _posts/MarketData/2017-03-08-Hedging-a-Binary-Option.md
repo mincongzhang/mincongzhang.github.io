@@ -10,7 +10,7 @@ Binary options are an interesting way to speculate on the markets. The idea that
 
 Binary options have a strike price and expiration period, which may be as little as a few minutes or hours. If the price is above the strike price at expiration, a binary call option pays out the set amount; a put option would pay nothing. If the actual price is below the strike price at expiration, the binary call option is worthless, but a binary put option would pay out the agreed amount. The price of the option depends on how likely the outcome is, including how far in or out of the money the underlying is trading at present.
 
-Hedging a binary option involves buying both a put and a call on the same financial instrument, with strike prices that allow both to be in the money at the same time. That is, the strike price of the binary call option is lower than the strike price of the binary put option.
+__Hedging a binary option involves buying both a put and a call on the same financial instrument, with strike prices that allow both to be in the money at the same time.__ That is, the strike price of the binary call option is lower than the strike price of the binary put option.
 
 Consider what this means. If the actual price is between the two strike prices at expiration, both the put and the call option would be in the money, and you would make a healthy profit over your premium outlaid. This is the best scenario, and all it requires is for the price to be in a range, the size of which is up to you. Admittedly, the larger the range, the more the binary options will have cost you, but that is part of your assessment on making the trade.
 
