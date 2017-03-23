@@ -123,3 +123,50 @@ public:
   }
 };
 ```
+
+### Longest Consecutive Sequence
+Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+
+Given [100, 4, 200, 1, 3, 2],
+The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+
+```
+#include <algorithm>
+
+class Solution {
+public:
+  /**
+   * @param nums: A list of integers
+   * @return an integer
+   */
+  int longestConsecutive(vector<int> &num) {
+    if(num.empty()) return 0;
+
+    std::set<int> sorted_num;
+    for(std::vector<int>::const_iterator it=num.begin(); it!=num.end(); ++it){
+      sorted_num.insert(*it);
+    }
+
+    std::set<int>::const_iterator it=sorted_num.begin();
+    int prev = *it;
+    it++;
+
+    int count = 1;
+    int max_count = 1;
+    while(it!=sorted_num.end()){
+      if(abs(*it - prev)==1){
+        count++;
+        max_count = std::max(count,max_count);
+      } else {
+        count = 1;
+      }
+      
+      prev=*it;
+      ++it;
+    }
+
+    return max_count;
+  }
+
+};
+```
