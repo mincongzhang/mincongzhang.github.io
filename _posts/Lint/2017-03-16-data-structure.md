@@ -171,3 +171,46 @@ public:
 
 };
 ```
+
+```
+//O(nlogn) solution
+
+
+#include <algorithm>
+
+class Solution {
+public:
+  /**
+   * @param nums: A list of integers
+   * @return an integer
+   */
+  int longestConsecutive(vector<int> &num) {
+    if(num.empty()) return 0;
+
+    std::sort(num.begin(),num.end());
+    int count = 1;
+    int max_count = 1;
+    for(size_t i=1; i< num.size(); ++i){
+      int diff = abs(num[i] - num[i-1]);
+
+      //1. diff == 1, Consecutive
+      if(diff==1){
+        count++;
+        max_count = std::max(count,max_count);
+        continue;
+      }
+
+      //2. diff > 1, not Consecutive
+      //reset if diff >1
+      if(diff>1){
+        count = 1;
+      }
+
+      //3. diff == 0, no count
+      //when diff == 0, continue
+    }
+
+    return max_count;
+  }
+};
+```
