@@ -222,6 +222,8 @@ Numbers keep coming, return the median of numbers at every time a new number add
 http://www.lintcode.com/en/problem/data-stream-median/
 
 ```
+#include <functional>   // std::greater
+#include <queue>
 class Solution {
 public:
   /**
