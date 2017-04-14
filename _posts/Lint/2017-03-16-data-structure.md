@@ -131,7 +131,7 @@ Given [100, 4, 200, 1, 3, 2],
 The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
 
 ```
-//O(n) solution
+//O(nlogn) solution (std::set)
 #include <algorithm>
 
 class Solution {
@@ -173,8 +173,7 @@ public:
 ```
 
 ```
-//O(nlogn) solution
-
+//O(nlogn) solution (sort)
 
 #include <algorithm>
 
@@ -212,6 +211,56 @@ public:
 
     return max_count;
   }
+};
+```
+
+```
+//O(n) solution: hashtable
+
+#include <unordered_map>
+
+class Solution {
+public:
+    /**
+     * @param nums: A list of integers
+     * @return an integer
+     */
+    int longestConsecutive(vector<int> &num) {
+        std::unordered_set<int> hash;
+        for(size_t i=0;i<num.size();++i){
+            hash.insert(num[i]);
+        }
+        
+        int length = INT_MIN;
+        while(!hash.empty()){
+            int cur = *hash.begin();
+            int count = 1;
+            
+            hash.erase(cur);
+            int next = cur+1;
+            
+            std::unordered_set<int>::const_iterator it=hash.find(next);
+            while(it!=hash.end()){
+                hash.erase(next);
+                count++;
+                next++;
+                it=hash.find(next);
+            }
+            
+            int prev = cur-1;
+            it = hash.find(prev);
+            while(it!=hash.end()){
+                hash.erase(prev);
+                count++;
+                prev--;
+                it=hash.find(prev);
+            }
+            
+            length = std::max(count,length);
+        }
+        
+        return length;
+    }
 };
 ```
 
