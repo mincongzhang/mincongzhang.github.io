@@ -6,6 +6,52 @@ description: Lintcode
 tags: ["C++","算法"]
 ---
 
+### Pascal
+
+```
+/*
+
+     1
+    1 1
+   1 2 1
+  1 3 3 1
+ 1 4 6 4 1
+1 5 10 10 5 1
+*/
+
+#include <iostream>
+#include <vector>
+
+int computePascal( int row, int col )
+{
+    if(row<0 || !(col >=0 && col<=row)){
+        return 0;
+    }
+    
+    if(row == 0) return 1;
+    if(col == 0 || col == row) return 1;
+    
+    return computePascal(row-1,col) + computePascal(row-1,col-1);
+}
+
+int computePascalHash( int row, int col )
+{
+    if(row<0 || !(col >=0 && col<=row)){
+        return 0;
+    }
+    
+    if(row == 0) return 1;
+    if(col == 0 || col == row) return 1;
+    
+    return computePascal(row-1,col) + computePascal(row-1,col-1);
+}
+
+int main(){
+    std::cout<<computePascal(4,3)<<std::endl;
+    return 0;
+}
+```
+
 ### Maximum Subarray
 Given an array of integers, find a contiguous subarray which has the largest sum.  
 http://www.lintcode.com/en/problem/maximum-subarray/  
