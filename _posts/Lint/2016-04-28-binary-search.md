@@ -16,6 +16,8 @@ We define a position P is a peek if:
 
 A[P] > A[P-1] && A[P] > A[P+1]
 
+http://www.lintcode.com/en/problem/find-peak-element/
+
 ```
 //O(logn)
 class Solution {
