@@ -146,6 +146,7 @@ class Solution {
 
 ###  Linked List Cycle
 Given a linked list, determine if it has a cycle in it.
+(Floyd Cycle Detection Algorithm)
 http://www.lintcode.com/en/problem/linked-list-cycle/
 
 ```
